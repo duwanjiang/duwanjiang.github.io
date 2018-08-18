@@ -1,10 +1,10 @@
 # Site settings
-title: DuWanJiang
-SEOTitle: 杜万江的博客 | Dwj Blog
+title: DuWanjiang Blog
+SEOTitle: 杜万江的博客 | DWJ Blog
 header-img: img/home-bg.jpg
-email: huxpro@gmail.com
-description: "关于前端与设计、黑客与画家 | 黄玄，Web & Mobile Lover，Software Engineer，UX Designer | 这里是 @Hux黄玄 的个人博客，与你一起发现更大的世界。"
-keyword: "杜万江, Hux黄玄, Hux, 鬼栈, huxpro, @huxpro, 黄玄的博客, Hux Blog, 博客, 个人网站, 互联网, Web, JavaScript, 前端, 设计"
+email: duwangjiang@gmail.com
+description: "关于前端与设计、黑客与画家 | 杜万江，Java Web & Hacker enthusiast | 这里是 @DWJ杜万江 的个人博客，记录自己的成长过程。"
+keyword: "杜万江, DWJ杜万江, DWJ, @DWJ, 杜万江的博客, duwanjiang Blog, 博客, 个人网站, 互联网, Web, Java, 服务端, 破解"
 url: "https://duwanjiang.github.io"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
@@ -13,11 +13,12 @@ future: true
 
 # SNS settings
 RSS: false
-weibo_username:     duwanjiang
-zhihu_username:     duwanjiang
+
+weibo_username:     s453600196
+zhihu_username:     s453600196
 github_username:    duwanjiang
-twitter_username:   duwanjiang
-#facebook_username:  huxpro
+twitter_username:   s453600196
+#facebook_username:  s453600196
 #linkedin_username:  firstname-lastname-idxxxx
 
 
@@ -53,7 +54,7 @@ kramdown:
 
 
 # Disqus settings
-disqus_username: hux
+disqus_username: DWJ
 
 # Netease settings
 netease_comment: false
@@ -92,37 +93,10 @@ service-worker: true
 # Friends
 friends: [
     {
-    #     title: "Su",
-    #     href: "http://su.gallery/"
-    # },{
-        title: "乱序",
-        href: "http://mida.re/"
+         title: "Hux黄玄",
+         href: "https://huangxuan.me/"
     },{
-        title: "前端外刊评论",
-        href: "http://qianduan.guru/"
-    },{
-        title: "天镶的博客",
-        href: "http://lingyu.wang/"
-    },{
-        title: "Luke 的自留地",
-        href: "http://hmqk1995.github.io"
-    },{
-        title: "Ebn's Blog",
-        href: "http://ebnbin.com/"
-    },{
-        title: "SmdCn's Blog",
-        href: "http://blog.smdcn.net"
-    },{
-        title: "David's Game",
-        href: "https://www.ruoyaowu.com/"
-    },{
-        title: "DHong Say",
-        href: "http://dhong.co"
-    },{
-        title: "尹峰以为",
-        href: "http://ingf.github.io/"
-    },{
-        title: "解旻的博客",
-        href: "http://xieminis.me/"
+        title: "田甜",
+        href: "http://maplebeats.com"
     }
 ]
