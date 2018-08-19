@@ -1,11 +1,12 @@
 ---
 layout:     post
-title:      "Hello 2015"
-subtitle:   " \"Hello World, Hello Blog\""
-date:       2015-01-29 12:00:00
-author:     "Hux"
+title:      "新的起点，新的开始"
+subtitle:   " \"我将从现在开始记录下我的点点滴滴\""
+date:       2018-08-19 15:58:00
+author:     "duwanjiang"
 header-img: "img/post-bg-2015.jpg"
 catalog: true
+comments:true
 tags:
     - 生活
 ---
