@@ -1,9 +1,9 @@
 # Site settings
-title: DuWanjiang Blog
+title: Dwj Blog
 SEOTitle: 杜万江的博客 | DWJ Blog
 header-img: img/home-bg.jpg
 email: duwangjiang@gmail.com
-description: "关于前端与设计、黑客与画家 | 杜万江，Java Web & Hacker enthusiast | 这里是 @DWJ杜万江 的个人博客，记录自己的成长过程。"
+description: "关于后端与开发、黑客与码农 | 杜万江，Java Web & Hacker enthusiast | 这里是 @DWJ杜万江 的个人博客，记录自己的成长过程。"
 keyword: "杜万江, DWJ杜万江, DWJ, @DWJ, 杜万江的博客, duwanjiang Blog, 博客, 个人网站, 互联网, Web, Java, 服务端, 破解"
 url: "https://duwanjiang.github.io"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
