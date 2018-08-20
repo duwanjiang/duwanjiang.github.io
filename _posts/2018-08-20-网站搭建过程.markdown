@@ -204,17 +204,12 @@ gitalk.render('gitalk-container')
 购买完成后就开始绑定我们的域名吧，步骤如下：
 
 1. 打开自己的DNS管理界面，输入如下：
-
-![domain_binding]({{site.url}}\img\posts_img\网站搭建过程\domain_binding.png)
+  ![domain_binding]({{site.url}}\img\posts_img\网站搭建过程\domain_binding.png)
 
 2. 在你的**用户名.github.io**库的设置界面中，找到 github page 中的custom domain 进行设置，如下图：
-
-![github_domain_setting]({{site.url}}\img\posts_img\网站搭建过程\github_domain_setting.png)
-
-![github_domain_setting_1]({{site.url}}\img\posts_img\网站搭建过程\github_domain_setting_1.png)
-
+  ![github_domain_setting]({{site.url}}\img\posts_img\网站搭建过程\github_domain_setting.png)
+  ![github_domain_setting_1]({{site.url}}\img\posts_img\网站搭建过程\github_domain_setting_1.png)
 3. 最后就可以通过你的域名进行访问了。
-
 
 ## 后记
 整个blog的搭建过程就完成了，希望我的总结对你有所帮助。
