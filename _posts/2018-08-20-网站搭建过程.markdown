@@ -35,18 +35,19 @@ tags:
 
 #### 1.2 快速创建一个github page
 
-1. 首先注册github账号，这里略
-2. 创建一个名为：**"用户名.github.io"**的repository。如下图：
+1、首先注册github账号，这里略
+
+2、创建一个名为：**"用户名.github.io"**的repository。如下图：
 
 ![githubPage_create]({{site.url}}\img\posts_img\网站搭建过程\githubPage_create.png)
 
-3. 在仓库下新建index.html的文件即可。
+3、在仓库下新建index.html的文件即可。
 
-   注意：1、Github Page仅支持静态页面
+注意：1、Github Page仅支持静态页面
 
-   　　　2、仓库里面只能是.html文件
+　　　2、仓库里面只能是.html文件
 
-4. 在浏览器输入http://用户名.github.io 的地址就可以访问你的index.html的内容了。
+4、在浏览器输入http://用户名.github.io 的地址就可以访问你的index.html的内容了。
 
 ### 2 搭建jekyll
 
@@ -60,30 +61,29 @@ tags:
 
 ##### 安装Ruby+DevKit
 
-1. 由于我当前是windown7操作系统，所以采用RubyInstaller安装环境
-2. 打开RubyInstaller的官网地址：[https://rubyinstaller.org/downloads/](https://rubyinstaller.org/downloads/)，如下图：
+1、由于我当前是windown7操作系统，所以采用RubyInstaller安装环境
+
+2、打开RubyInstaller的官网地址：[https://rubyinstaller.org/downloads/](https://rubyinstaller.org/downloads/)，如下图：
 
 ![ruby_devkit_download]({{site.url}}\img\posts_img\网站搭建过程\ruby_devkit_download.png)
 
-3. 这里我们在带有开发工具的版本Ruby+DevKit2.5.1-2(x64)（这里的资源下载貌似要翻墙）。下载完成后，双击开始安装，这里省略。
-4. 安装完成后，提示是否打开命令窗体安装msys2，这里要勾选，并点击“完成”。这时会打开一个提示窗口进行msys2安装，这是会让你输入命令选项，我们输入1，进行msys2的安装，如下图：
+3、这里我们在带有开发工具的版本Ruby+DevKit2.5.1-2(x64)（这里的资源下载貌似要翻墙）。下载完成后，双击开始安装，这里省略。
+
+4、安装完成后，提示是否打开命令窗体安装msys2，这里要勾选，并点击“完成”。这时会打开一个提示窗口进行msys2安装，这是会让你输入命令选项，我们输入1，进行msys2的安装，如下图：
 
 ![msys2_install]({{site.url}}\img\posts_img\网站搭建过程\msys2_install.png)
 
-5. 等待安装完成后，打开cmd,然后输入"gem install jekyll bundler"来安装jekyll 。
+5、等待安装完成后，打开cmd,然后输入"gem install jekyll bundler"来安装jekyll 。
 
-   ```ruby
-   gem install jekyll bundler
-   ```
+```ruby
+gem install jekyll bundler
+```
+6、最后安装完成后我们可以通过 jekyll -v 查看jekyll的版本。
 
-6. 最后安装完成后我们可以通过 jekyll -v 查看jekyll的版本。
-
-   ```ruby
-   > jekyll -v 
-   jekyll 3.8.3
-   ```
-
-
+```ruby
+> jekyll -v 
+jekyll 3.8.3
+```
 #### 2.3 创建一个jekyll站点
 
 jekyll的使用是通过cmd来进行，这了我们需要在cmd中输入“jekyll new myblog ” 在当前目录下创建一个myblog的站点，如下图：
@@ -114,33 +114,35 @@ bundle exec jekyll serve
 
 首先需要在你本机上安装git工具，这里略。
 
-1. 将 **用户名.github.io**仓库clone到本地。
-2. 然后用**cmd**在**用户名.github.io**的上级目录输入 
+1、将 **用户名.github.io**仓库clone到本地。
+
+2、然后用**cmd**在**用户名.github.io**的上级目录输入 
 
 ```javascript
 jekyll new 用户名.github.io
 ```
 
-3. 然后将项目中的代码 add 到git中
+3、然后将项目中的代码 add 到git中
 
 ```javascript
 > git add 用户名.github.io
 ```
 
-4. 提交代码
+4、提交代码
 
 ```javascript
 > git commit -m "第一次提交"
 ```
 
-5. 将代码push到github服务器
+5、将代码push到github服务器
 
 ```javascript
 > git push orgion master
 ```
 
-6. 最后就可以通过访问 **http://用户名.github.io** 来访问你的jekyll站点了。
-7. 如果像我这种新手对jekyll不是很懂，或者像快速搭建一个好看的jekyll站点，你可以fork别人大牛的模板，然后修改为自己的，也可以去下载主题。这里我也是参考[Hux 黄翔](https://github.com/Huxpro/huxpro.github.io)大牛的模板，里边有详细的参数介绍。
+6、最后就可以通过访问 **http://用户名.github.io** 来访问你的jekyll站点了。
+
+7、如果像我这种新手对jekyll不是很懂，或者像快速搭建一个好看的jekyll站点，你可以fork别人大牛的模板，然后修改为自己的，也可以去下载主题。这里我也是参考[Hux 黄翔](https://github.com/Huxpro/huxpro.github.io)大牛的模板，里边有详细的参数介绍。
 
 ### 3 配置评论系统
 
@@ -161,26 +163,32 @@ jekyll new 用户名.github.io
 
 #### 3.1 gitalk配置
 
-1. 在需要插入评论的地方给个占位`<div id="gitalk-container"></div>`
-2. 接着在占位下方引入插件，也可以js文件和css文件下载下来自己引入
+1、在需要插入评论的地方给个占位
 
+``` html
+<div id="gitalk-container"></div>
 ```
+
+2、接着在占位下方引入插件，也可以js文件和css文件下载下来自己引入
+
+```html
 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script> 
 ```
 
-3. 创建 **GitHub Application**，如果没有 [点击这里申请](https://github.com/settings/applications/new)
+3、创建 **GitHub Application**，如果没有 [点击这里申请](https://github.com/settings/applications/new)
 
 ![github_application_apply]({{site.url}}\img\posts_img\网站搭建过程\github_application_apply.png)
 
-4. 在自己的GitHub账号创建一个库来放评论，库名称填上一步的应用名称
-5. 在博客的引用插件下方填写配置
+4、在自己的GitHub账号创建一个库来放评论，库名称填上一步的应用名称
+
+5、在博客的引用插件下方填写配置
 
 ```javascript
 var gitalk = new Gitalk({
-                clientID: '9f89xxxxxxde0f46', ///步骤3创建后得到的
-                clientSecret: '22fc21a22xxxxxxf599fd41746ff54f',///步骤3创建后得到的
-                repo: 'myblog_comment',///步骤4创建的库名
+                clientID: '9f89xxxxxxde0f46', ///第3步GitHub Application创建后得到的
+                clientSecret: '22fc21a22xxxxxxf599fd41746ff54f',///第3步GitHub Application创建后得到的
+                repo: 'myblog_comment',///第4步创建的评论库名称
                 owner: 'duwanjiang',//自己的GitHub用户名
                 admin: ['duwanjiang'],//自己的GitHub用户名
                 id: '{{id}}', // 唯一标示，一般是文章id也可以是文章url
@@ -203,13 +211,14 @@ gitalk.render('gitalk-container')
 
 购买完成后就开始绑定我们的域名吧，步骤如下：
 
-1. 打开自己的DNS管理界面，输入如下：
-  ![domain_binding]({{site.url}}\img\posts_img\网站搭建过程\domain_binding.png)
+1、打开自己的DNS管理界面，输入如下：
+![domain_binding]({{site.url}}\img\posts_img\网站搭建过程\domain_binding.png)
 
-2. 在你的**用户名.github.io**库的设置界面中，找到 github page 中的custom domain 进行设置，如下图：
-  ![github_domain_setting]({{site.url}}\img\posts_img\网站搭建过程\github_domain_setting.png)
-  ![github_domain_setting_1]({{site.url}}\img\posts_img\网站搭建过程\github_domain_setting_1.png)
-3. 最后就可以通过你的域名进行访问了。
+2、在你的**用户名.github.io**库的设置界面中，找到 github page 中的custom domain 进行设置，如下图：
+
+![github_domain_setting]({{site.url}}\img\posts_img\网站搭建过程\github_domain_setting.png)![github_domain_setting_1]({{site.url}}\img\posts_img\网站搭建过程\github_domain_setting_1.png)
+
+3、最后就可以通过你的域名进行访问了。
 
 ## 后记
 整个blog的搭建过程就完成了，希望我的总结对你有所帮助。
