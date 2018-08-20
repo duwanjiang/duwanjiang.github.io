@@ -17,7 +17,7 @@ tags:
 
 在我最初想搭建一个blog的时候，我第一时间想到的就是要自己租一台服务器，然后在里边自己搭“web框架+数据库”（一个正常做网站人员的思路），但是一想又觉得好麻烦，而且自已还要去架构和设计自己的blog，感觉在短期内是很难完成了，除非你有现成的框架，但是也少不了后期的维护工作，毕竟我现在的目标是快速搭建一个blog来记录我的学习历程。
 
-总总原因之后，我在好朋友田甜的帮助下给我创建blog的思路，整体架构就是：采用 GitHub Pages](https://pages.github.com/) 免费的存储资源+[Jekyll](http://jekyllrb.com/)模板引擎 + [gitalk](https://github.com/gitalk/gitalk#install)评论系统 + [godaddy](https://hk.godaddy.com/en)域名申请网站。
+总总原因之后，我在好朋友田甜的帮助下给我创建blog的思路，整体架构就是：采用 [GitHub Pages](https://pages.github.com/) 免费的存储资源+[Jekyll](http://jekyllrb.com/)模板引擎 + [gitalk](https://github.com/gitalk/gitalk#install)评论系统 + [godaddy](https://hk.godaddy.com/en)域名申请网站。
 
 整套系统没有涉及到数据库，所有的blog文章和评论都存储在github上。简直就是完美，但听说github超过1G就会给你发警告，所以尽量不要存储大文件。
 
