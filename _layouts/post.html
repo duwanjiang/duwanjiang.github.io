@@ -91,7 +91,7 @@ layout: default
                 </ul>
 
 
-                {% if site.disqus_username %}
+                {% if site.comment_type == "disqus" %}
                 <!-- disqus 评论框 start -->
                 <div class="comment">
                     <div id="disqus_thread" class="disqus-thread"></div>
@@ -99,10 +99,16 @@ layout: default
                 <!-- disqus 评论框 end -->
                 {% endif %}
 
-                {% if site.netease_comment %}
+                 {% if site.comment_type == "netease" %}
                 <!-- 网易云跟帖 评论框 start -->
                 <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
                 <!-- 网易云跟帖 评论框 end -->
+                {% endif %}
+				
+				{% if site.comment_type == "gitalk" %}
+                <!-- gitalk 评论框 start -->
+                <div id="gitalk-container" ></div>
+                <!-- gitalk 评论框 end -->
                 {% endif %}
             </div>  
 
@@ -162,14 +168,15 @@ layout: default
 </article>
 
 
-{% if site.netease_comment %}
+{% if site.netease_sourceId and site.comment_type == "netease" %}
 <!-- 网易云跟帖JS代码 start -->
 <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
 <script>
+console.log("comment test gitalk")
   var cloudTieConfig = {
     url: document.location.href, 
-    sourceId: "",
-    productKey: "de25fc98a6fe48b3bc8a7ae765da99a0",
+    sourceId: {{site.netease_sourceId}},
+    productKey: {{site.netease_productKey}},
     target: "cloud-tie-wrapper"
   };
   var yunManualLoad = true;
@@ -179,9 +186,10 @@ layout: default
 {% endif %}
 
 
-{% if site.disqus_username %}
+{% if site.disqus_username and site.comment_type == "disqus" %}
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
+console.log("comment test gitalk")
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "{{site.disqus_username}}";
     var disqus_identifier = "{{page.id}}";
@@ -194,6 +202,38 @@ layout: default
     })();
 </script>
 <!-- disqus 公共JS代码 end -->
+{% endif %}
+
+
+{% if site.gitalk_owner %}
+
+<!-- gitalk 公共JS代码 start (一个网页只需插入一次) -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script type="text/javascript">
+	console.log("comment test gitalk")
+
+    /* * * CONFIGURATION VARIABLES * * */
+    var gitalk_owner = "{{site.gitalk_owner}}";
+    var gitalk_clientId = "{{site.gitalk_clientId}}";
+    var gitalk_clientSecret = "{{site.gitalk_clientSecret}}";
+    var gitalk_repo = "{{site.gitalk_repo}}";
+    var gitalk_identifier = "{{page.id}}";
+    var disqus_url = "{{site.url}}{{page.url}}";
+	
+	var gitalk = new Gitalk({
+                clientID: gitalk_clientId, ///创建gitalk后得到
+                clientSecret: gitalk_clientSecret,///创建gitalk后得到
+                repo: gitalk_repo,///创建gitalk应用的名字
+                owner: gitalk_owner,//自己的GitHub用户名
+                admin: [gitalk_owner],//自己的GitHub用户名
+                id: gitalk_identifier, // 唯一标示，一般是文章id也可以是文章url
+                distractionFreeMode: false  // Facebook-like distraction free mode
+            })
+    gitalk.render('gitalk-container')
+</script>
+<!-- gitalk 公共JS代码 end -->
 {% endif %}
 
 

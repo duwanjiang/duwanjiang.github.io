@@ -54,10 +54,21 @@ kramdown:
 
 
 # Disqus settings
-disqus_username: duwanjiang
+#disqus_username: duwanjiang
+
+# Gitalk settings
+gitalk_clientId: ed4f9aea65c2a8100dbc       
+gitalk_clientSecret: 50e4384ef26be345c8d0b1c117000400de3ab50e
+gitalk_owner: duwanjiang
+gitalk_repo: myblog_comment
 
 # Netease settings
-netease_comment: false
+#netease_sourceId: 
+#netease_productKey: 
+
+
+# Comment type settings , for instance: gitalk,disqus,netease
+comment_type: gitalk
 
 
 
