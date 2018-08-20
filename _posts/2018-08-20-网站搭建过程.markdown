@@ -1,0 +1,220 @@
+---
+layout: 	post
+title: 		"我的blog搭建过程"
+subtitle:	" \"记录下我搭建这个blog的整体过程\""
+date:		2018-08-20 18:34:00
+author:		"duwanjiang"
+header-img:	"img/home-bg-o.jpg"
+catalog: true
+tags:
+    - blog
+---
+
+> “留给那些想自己建blog的人 ”
+
+
+## 前言
+
+在我最初想搭建一个blog的时候，我第一时间想到的就是要自己租一台服务器，然后在里边自己搭“web框架+数据库”（一个正常做网站人员的思路），但是一想又觉得好麻烦，而且自已还要去架构和设计自己的blog，感觉在短期内是很难完成了，除非你有现成的框架，但是也少不了后期的维护工作，毕竟我现在的目标是快速搭建一个blog来记录我的学习历程。
+
+总总原因之后，我在好朋友田甜的帮助下给我创建blog的思路，整体架构就是：采用 GitHub Pages](https://pages.github.com/) 免费的存储资源+[Jekyll](http://jekyllrb.com/)模板引擎 + [gitalk](https://github.com/gitalk/gitalk#install)评论系统 + [godaddy](https://hk.godaddy.com/en)域名申请网站。
+
+整套系统没有涉及到数据库，所有的blog文章和评论都存储在github上。简直就是完美，但听说github超过1G就会给你发警告，所以尽量不要存储大文件。
+
+## 正文
+
+接下来说说搭建这个博客的技术细节。  
+
+### 1 创建github page
+
+#### 1.1 github page 介绍
+
+首先来说下gitHub：gitHub是一个面向[开源](https://baike.baidu.com/item/%E5%BC%80%E6%BA%90/20720669)及私有[软件](https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6/12053)项目的托管平台，因为只支持git 作为唯一的版本库格式进行托管，故名gitHub。
+
+而github page则是你github的门户（这是我个人理解），因为该门户是每个github账号就有一个，默认的地址是 http://useraccount.github.io ，而且这个门户的代码全在你github中的一个名为useraccount.github.io 的repository中，只要你在该repository中创建一个index.html就可以通过域名访问了。
+
+#### 1.2 快速创建一个github page
+
+1. 首先注册github账号，这里略
+2. 创建一个名为：**"用户名.github.io"**的repository。如下图：
+
+![githubPage_create]({{site.url}}\img\posts_img\网站搭建过程\githubPage_create.png)
+
+3. 在仓库下新建index.html的文件即可。
+
+   注意：1、Github Page仅支持静态页面
+
+   　　　2、仓库里面只能是.html文件
+
+4. 在浏览器输入http://用户名.github.io 的地址就可以访问你的index.html的内容了。
+
+### 2 搭建jekyll
+
+#### 2.1 jekyll介绍
+
+**jekyll**:jekyll是一个简单的免费的Blog生成工具，类似WordPress。但是和WordPress又有很大的不同，原因是jekyll只是一个生成静态网页的工具，不需要数据库支持。但是可以配合第三方服务,例如Disqus，gitalk。最关键的是jekyll可以免费部署在Github上，而且可以绑定自己的域名。它的官方网站是（[https://jekyllrb.com/docs/quickstart/](https://jekyllrb.com/docs/quickstart/)），我更喜欢国内翻译的中文网站（https://www.jekyll.com.cn/）
+
+#### 2.2 搭建jekyll环境
+
+首先打开[jekyll快速指南](https://jekyllrb.com/docs/windows/)，里边有详细的操作说明，因为jekyll是采用Ruby开发的，所以需要先安装Ruby的开发环境。
+
+##### 安装Ruby+DevKit
+
+1. 由于我当前是windown7操作系统，所以采用RubyInstaller安装环境
+2. 打开RubyInstaller的官网地址：[https://rubyinstaller.org/downloads/](https://rubyinstaller.org/downloads/)，如下图：
+
+![ruby_devkit_download]({{site.url}}\img\posts_img\网站搭建过程\ruby_devkit_download.png)
+
+3. 这里我们在带有开发工具的版本Ruby+DevKit2.5.1-2(x64)（这里的资源下载貌似要翻墙）。下载完成后，双击开始安装，这里省略。
+4. 安装完成后，提示是否打开命令窗体安装msys2，这里要勾选，并点击“完成”。这时会打开一个提示窗口进行msys2安装，这是会让你输入命令选项，我们输入1，进行msys2的安装，如下图：
+
+![msys2_install]({{site.url}}\img\posts_img\网站搭建过程\msys2_install.png)
+
+5. 等待安装完成后，打开cmd,然后输入"gem install jekyll bundler"来安装jekyll 。
+
+   ```ruby
+   gem install jekyll bundler
+   ```
+
+6. 最后安装完成后我们可以通过 jekyll -v 查看jekyll的版本。
+
+   ```ruby
+   > jekyll -v 
+   jekyll 3.8.3
+   ```
+
+
+#### 2.3 创建一个jekyll站点
+
+jekyll的使用是通过cmd来进行，这了我们需要在cmd中输入“jekyll new myblog ” 在当前目录下创建一个myblog的站点，如下图：
+
+![jekyll_create_site]({{site.url}}\img\posts_img\网站搭建过程\jekyll_create_site.png)
+
+#### 2.4 本地运行jekyll站点
+
+创建完成后 ，通过如下命令来运行myblog项目在演示服务器上
+
+```ruby
+# Change into your new directory
+cd myblog
+
+# Build the site on the preview server
+bundle exec jekyll serve
+```
+
+这时服务就启动了，如下图：
+
+![start_jekyll_serve]({{site.url}}\img\posts_img\网站搭建过程\start_jekyll_serve.png)
+
+然后通过在浏览器中访问 [http://localhost:4000](http://127.0.0.1:4000)
+
+![visite_local]({{site.url}}\img\posts_img\网站搭建过程\visite_local.png)
+
+#### 2.5 将站点上传到github
+
+首先需要在你本机上安装git工具，这里略。
+
+1. 将 **用户名.github.io**仓库clone到本地。
+2. 然后用**cmd**在**用户名.github.io**的上级目录输入 
+
+```javascript
+jekyll new 用户名.github.io
+```
+
+3. 然后将项目中的代码 add 到git中
+
+```javascript
+> git add 用户名.github.io
+```
+
+4. 提交代码
+
+```javascript
+> git commit -m "第一次提交"
+```
+
+5. 将代码push到github服务器
+
+```javascript
+> git push orgion master
+```
+
+6. 最后就可以通过访问 **http://用户名.github.io** 来访问你的jekyll站点了。
+7. 如果像我这种新手对jekyll不是很懂，或者像快速搭建一个好看的jekyll站点，你可以fork别人大牛的模板，然后修改为自己的，也可以去下载主题。这里我也是参考[Hux 黄翔](https://github.com/Huxpro/huxpro.github.io)大牛的模板，里边有详细的参数介绍。
+
+### 3 配置评论系统
+
+评论系统这个词，这也是我第一次听说，之前没做过blog，不知道有这样的东西，它就是大公司做好的一套评论和留言功能的插件，只要注册了账号就能很方便的集成到自己的blog上，而且功能丰富，不需要我们自己做数据存储，是不是很方便呢。
+
+目前第三方评论插件已经死得差不多了，从一开始**多说**到后来的**网易云跟帖**，最后剩下了**畅言**。最近畅言为了活下去，也退出了广告，让用户体验更差了，所以让我不得不寻找国外的评论插件。
+
+国外的评论插件我找到两个，一个是disqus，一个是gitalk。
+
+- **disqus**：是一个国外做得很好的第三方评论系统当前有80万家第三方网站在使用Disqus提供的第三方评论系统，其评论系统每月的独立用户访问量已接近5亿，这一数字较2010年增长了500%。包括CNN、NBC、Fox News、Engadget、Time等知名网站均使用了Disqus提供的社会化评论系统。WordPress、Blogger、Tumblr等第三方博客平台均提供了Disqus第三方评论插件，目前，第三方社会化评论系统在美国，基本是主流网站的标配。但是对于我们国内用户有个缺点就是国内用户不能访问。
+- **gitalk**：是一个基于 Github Issue 和 Preact 开发的评论插件，使用 GitHub 登录，国内用户可以访问。
+  - 支持多语言 [en, zh-CN, zh-TW, es-ES, fr, ru]
+  - 支持个人或组织
+  - 无干扰模式（设置 distractionFreeMode 为 true 开启）
+  - 快捷键提交评论 （cmd | ctrl + enter）
+
+所以这里我义无返顾的选择了gitalk。
+
+#### 3.1 gitalk配置
+
+1. 在需要插入评论的地方给个占位`<div id="gitalk-container"></div>`
+2. 接着在占位下方引入插件，也可以js文件和css文件下载下来自己引入
+
+```
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+```
+
+3. 创建 **GitHub Application**，如果没有 [点击这里申请](https://github.com/settings/applications/new)
+
+![github_application_apply]({{site.url}}\img\posts_img\网站搭建过程\github_application_apply.png)
+
+4. 在自己的GitHub账号创建一个库来放评论，库名称填上一步的应用名称
+5. 在博客的引用插件下方填写配置
+
+```javascript
+var gitalk = new Gitalk({
+                clientID: '9f89xxxxxxde0f46', ///步骤3创建后得到的
+                clientSecret: '22fc21a22xxxxxxf599fd41746ff54f',///步骤3创建后得到的
+                repo: 'myblog_comment',///步骤4创建的库名
+                owner: 'duwanjiang',//自己的GitHub用户名
+                admin: ['duwanjiang'],//自己的GitHub用户名
+                id: '{{id}}', // 唯一标示，一般是文章id也可以是文章url
+                distractionFreeMode: false  // Facebook-like distraction free mode
+            })
+gitalk.render('gitalk-container')
+```
+
+以上完成后就可以上传上自己的博客了。
+
+上传完，第一次进入相应页面会出现一个初始化提示。
+
+根据操作登录自己的GitHub授权就可以了。
+
+### 4 域名绑定
+
+在所有站点搭建工作完成后，最后就是根据自己的需要是否绑定一个自己的域名了。如果你不满足github的免费二级域名，那么就来购买一个属于自己的域名吧！！！
+
+这里具体购买域名的运营商大家自行选择，我这里选择的是[Godaddy](https://sg.godaddy.com/) 这个网站中文不能登录，要用英文版才能登录，具体注册和购买略
+
+购买完成后就开始绑定我们的域名吧，步骤如下：
+
+1. 打开自己的DNS管理界面，输入如下：
+
+![domain_binding]({{site.url}}\img\posts_img\网站搭建过程\domain_binding.png)
+
+2. 在你的**用户名.github.io**库的设置界面中，找到 github page 中的custom domain 进行设置，如下图：
+
+![github_domain_setting]({{site.url}}\img\posts_img\网站搭建过程\github_domain_setting.png)
+
+![github_domain_setting_1]({{site.url}}\img\posts_img\网站搭建过程\github_domain_setting_1.png)
+
+3. 最后就可以通过你的域名进行访问了。
+
+
+## 后记
+整个blog的搭建过程就完成了，希望我的总结对你有所帮助。
