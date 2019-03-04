@@ -1,6 +1,6 @@
 ---
 layout: 	post
-title: 		"A new beginning, a new starting point"
+title: 		"New starting point and new beginning"
 subtitle:	" \"我将从现在开始记录下我的点点滴滴\""
 date:		2018-08-19 15:58:00
 author:		"duwanjiang"
@@ -42,4 +42,4 @@ tags:
 最后我希望通过这个博客记录下我的学习历程，督促自己不断积累，最终成为一个技术大牛。
 当然也希望通过它来结交更多的朋友，互相学习。
 
-最后以文章标题结尾：***A new beginning, a new starting point***
+最后以文章标题结尾：***New starting point and new beginning***
