@@ -6,6 +6,7 @@ date:		2018-08-19 15:58:00
 author:		"duwanjiang"
 header-img:	"img/post-bg-2018.jpg"
 catalog: true
+categories: 生活
 tags:
     - 生活
 ---
