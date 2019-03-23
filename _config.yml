@@ -7,7 +7,7 @@ description: "关于后端与开发、黑客与码农 | 杜万江，Java Web & H
 keyword: "杜万江, DWJ杜万江, DWJ, @DWJ, 杜万江的博客, duwanjiang Blog, 博客, 个人网站, 互联网, Web, Java, 服务端, 破解"
 url: "https://duwanjiang.github.io"              # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
-resume_url:"http://duwanjiang.com/Resume.io/"   # Resume host 
+resume_url: http://duwanjiang.com/Resume.io/    # Resume host 
 # Publish posts or collection documents with a future date.
 future: true
 
