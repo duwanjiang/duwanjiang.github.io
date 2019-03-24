@@ -225,7 +225,8 @@
 	function audioAutoPlay(id){
 		var media = document.getElementById(id);
 		media.src = "./love_resource/1790392009.mp3"; 
-		media.play()
+		media.pause();
+		media.play();
 	}
 	//开始播放
 	audioAutoPlay('bgmusic');
