@@ -223,26 +223,9 @@
 	
 	//增加了微信播放功能
 	function audioAutoPlay(id){
-		var audio = document.getElementById(id);
-
-		var play = function() {
-			document.removeEventListener("WeixinJSBridgeReady", play);
-			document.removeEventListener("YixinJSBridgeReady", play);
-
-			audio.play();
-			audio.pause();
-			// document.removeEventListener("touchstart", play, false);
-		};
-		
-		audio.play();
-		//audio.pause();
-
-		//weixin
-		document.addEventListener("WeixinJSBridgeReady", play, false);
-		//yixin
-		document.addEventListener('YixinJSBridgeReady', play, false);
-
-		document.addEventListener("touchstart", play, false);
+		var media = document.getElementById(id);
+		media.src = "./love_resource/1790392009.mp3"; 
+		media.play()
 	}
 	//开始播放
 	audioAutoPlay('bgmusic');
