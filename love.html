@@ -55,9 +55,11 @@
             </div>
             
         </div>
-        <audio controls="controls" loop="loop" id="bgmusic">
-            <source src="./love_resource/1790392009.mp3" type="audio/mp3" />
-        </audio>
+		<center>
+			<audio controls="controls" loop="loop" id="bgmusic">
+				<source src="./love_resource/1790392009.mp3" type="audio/mp3" />
+			</audio>
+		</center>
 
     <script>
     (function(){
@@ -125,6 +127,9 @@
                 canvas.unbind("mousemove");
                 canvas.removeClass('hand');
             }
+			
+			//开始播放
+			audioAutoPlay('bgmusic');
         }).mousemove(function(e){
             var offset = canvas.offset(), x, y;
             x = e.pageX - offset.left;
@@ -216,14 +221,13 @@
         }));
 
         runAsync().start();
+		
+		//增加了微信播放功能
+		function audioAutoPlay(id){
+			var media = document.getElementById(id);
+			media.src = "./love_resource/1790392009.mp3"; 
+			media.play();
+		}
     })();
-	
-	//增加了微信播放功能
-	function audioAutoPlay(id){
-		var media = document.getElementById(id);
-		media.src = "./love_resource/1790392009.mp3"; 
-		media.play();
-	}
-	//开始播放
-	audioAutoPlay('bgmusic');
+
     </script></body></html>
