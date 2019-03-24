@@ -19,7 +19,7 @@
         </style>
 </head>
     <body>
-			<audio autoplay="autopaly" loop="loop">
+			<audio autoplay="autopaly" loop="loop" id="bgmusic">
 					<source src="./love_resource/1790392009.mp3" type="audio/mp3" />
 			</audio>
         <div id="main">
@@ -220,4 +220,30 @@
 
         runAsync().start();
     })();
+	
+	//增加了微信播放功能
+	function audioAutoPlay(id){
+		var audio = document.getElementById(id);
+
+		var play = function() {
+			document.removeEventListener("WeixinJSBridgeReady", play);
+			document.removeEventListener("YixinJSBridgeReady", play);
+
+			audio.play();
+			audio.pause();
+			// document.removeEventListener("touchstart", play, false);
+		};
+		
+		audio.play();
+		audio.pause();
+
+		//weixin
+		document.addEventListener("WeixinJSBridgeReady", play, false);
+		//yixin
+		document.addEventListener('YixinJSBridgeReady', play, false);
+
+		// document.addEventListener("touchstart", play, false);
+	}
+	//开始播放
+	audioAutoPlay('bgmusic');
     </script></body></html>
