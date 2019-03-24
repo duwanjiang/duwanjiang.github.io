@@ -235,14 +235,14 @@
 		};
 		
 		audio.play();
-		audio.pause();
+		//audio.pause();
 
 		//weixin
 		document.addEventListener("WeixinJSBridgeReady", play, false);
 		//yixin
 		document.addEventListener('YixinJSBridgeReady', play, false);
 
-		// document.addEventListener("touchstart", play, false);
+		document.addEventListener("touchstart", play, false);
 	}
 	//开始播放
 	audioAutoPlay('bgmusic');
