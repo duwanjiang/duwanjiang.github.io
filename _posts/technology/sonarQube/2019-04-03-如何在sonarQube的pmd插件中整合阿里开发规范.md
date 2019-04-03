@@ -1,7 +1,7 @@
 ---
 layout: 	post
-title: 		"如何在sonarQube的pmd插件"
-subtitle:	" \"如何在sonarQube的pmd插件\""
+title: 		"sonarQube集成阿里pmd插件"
+subtitle:	" \"如何在sonarQube的pmd插件中整合阿里开发规范\""
 date:		2019-04-03 18:34:00
 author:		"duwanjiang"
 header-img:	"img/home-bg-o.jpg"
@@ -11,7 +11,7 @@ tags:
     - sonarQube
 ---
 
-> “如何在sonarQube的pmd插件 ”
+> “在sonarQube的pmd插件中整合阿里开发规范 ”
 
 # 1、sonarqube简介
 
