@@ -65,7 +65,7 @@ sonar-pmd是sonar官方的支持pmd的插件，但是还不支持p3c，需要在
 
 ![]({{"\img\posts_img\technology\如何在sonarQube的pmd插件中整合阿里开发规范\3.png" | prepend:site.url}})
 
-### 2.1.2 添加阿里的开发规则
+### 2.1.2、添加阿里的开发规则
 
 为了区别阿里的p3c规则，这里新建了一个rules-p3c.xml文件，如下图：
 
