@@ -49,18 +49,16 @@ sonar-pmd是sonar官方的支持pmd的插件，但是还不支持p3c，需要在
 屏蔽掉了一条默认的pmd规则，需要如下3步：
 
 1. 首先注释掉pmd.properties文件中的“StringInstantiation”，如下图：
+  ![]({{"\img\posts_img\technology\如何在sonarQube的pmd插件中整合阿里开发规范\4.png" | prepend:site.url}})
 
-![]({{"\img\posts_img\technology\如何在sonarQube的pmd插件中整合阿里开发规范\4.png" | prepend:site.url}})
-
-* （注意：规则配置在pmd.properties文件中是以 .name 结尾，不要多注释掉其它的以.param.xxx结尾的配置，否则可能导致打出的jar包放到sonar下时sonar启动失败 ）
+  * （注意：规则配置在pmd.properties文件中是以 .name 结尾，不要多注释掉其它的以.param.xxx结尾的配置，否则可能导致打出的jar包放到sonar下时sonar启动失败 ）
 
 2. 注释掉rules.xml中的 StringInstantiation对应的配置，如下图：
-
-![]({{"\img\posts_img\technology\如何在sonarQube的pmd插件中整合阿里开发规范\6.png" | prepend:site.url}})
+  ![]({{"\img\posts_img\technology\如何在sonarQube的pmd插件中整合阿里开发规范\6.png" | prepend:site.url}})
 
 3. 注释掉pmd-model.xml中的StringInstantiation对应的配置，如下图：
 
-![]({{"\img\posts_img\technology\如何在sonarQube的pmd插件中整合阿里开发规范\3.png" | prepend:site.url}})
+  ![]({{"\img\posts_img\technology\如何在sonarQube的pmd插件中整合阿里开发规范\3.png" | prepend:site.url}})
 
 ### 2.1.2、添加阿里的开发规则
 
@@ -76,23 +74,21 @@ sonar-pmd是sonar官方的支持pmd的插件，但是还不支持p3c，需要在
 
 1. 在 pmd.properties中添加
 
-``` properties
-rule.pmd.CommentsMustBeJavadocFormatRule.name=CommentsMustBeJavadocFormatRule
-```
+  ``` properties
+  rule.pmd.CommentsMustBeJavadocFormatRule.name=CommentsMustBeJavadocFormatRule
+  ```
 
 2. 在 rules-p3c.xml中添加
 
-``` xml
+	``` xml
 <rule key="CommentsMustBeJavadocFormatRule">
     <priority>MAJOR</priority>
     <configKey><![CDATA[rulesets/java/ali-comment.xml/CommentsMustBeJavadocFormatRule]]></configKey>
 </rule>
-```
-
+	```
 3. 在pmd-model.xml中添加
 
-
-``` xml
+	``` xml
 <!--AlibabaJavaComments-->
 <chc>
     <rule-repo>pmd</rule-repo>
@@ -107,59 +103,59 @@ rule.pmd.CommentsMustBeJavadocFormatRule.name=CommentsMustBeJavadocFormatRule
         <txt>min</txt>
     </prop>
 </chc>
-```
-
+	```
 4. 添加描述文件— org/sonar/l10n/pmd/rules/pmd-p3c/CommentsMustBeJavadocFormatRule.html，内容来自p3c对应xml 用于错误详情页面的展示：
 
-``` html
-<p>Look for qualified this usages in the same class.</p>
-<p>Examples:</p>
-<pre>
-/**
-*
-* XXX class function description.
-*
-*/
-public class XxClass implements Serializable {
-   private static final long serialVersionUID = 113323427779853001L;
-   /**
-   * id
-   */
-   private Long id;
-   /**
-   * title
-   */
-   private String title;
-   /**
-   * find by id
-   *
-   * @param ruleId rule id
-   * @param page start from 1
-   * @return Result<Xxxx>
-   */
-   public Result<Xxxx> funcA(Long ruleId, Integer page) {
-       return null;
-   }
-}
-</pre>
-```
+  ```html
+  <p>Look for qualified this usages in the same class.</p>
+  <p>Examples:</p>
+  <pre>
+  /**
+  *
+  * XXX class function description.
+  *
+  */
+  public class XxClass implements Serializable {
+     private static final long serialVersionUID = 113323427779853001L;
+     /**
+     * id
+     */
+     private Long id;
+     /**
+     * title
+     */
+     private String title;
+     /**
+     * find by id
+     *
+     * @param ruleId rule id
+     * @param page start from 1
+     * @return Result<Xxxx>
+     */
+     public Result<Xxxx> funcA(Long ruleId, Integer page) {
+         return null;
+     }
+  }
+  </pre>
+  ```
+
 
 ### 2.1.3、修改p3c的提示语
 如leader要求添加 PASS-ALI 前缀。
 
-1. 下载p3c-pmd源码 [https://github.com/alibaba/p3c](https://github.com/alibaba/p3c)，描述内容都在p3c/p3c-pmd/src/main/resources/messages.xml，在messages.xml中每条规则的提示语前添加前缀 **PASS-ALI**: 
-
-![]({{"\img\posts_img\technology\如何在sonarQube的pmd插件中整合阿里开发规范\1.png" | prepend:site.url}})
-
+1. 下载p3c-pmd源码 [https://github.com/alibaba/p3c](https://github.com/alibaba/p3c)，描述内容都在p3c/p3c-pmd/src/main/resources/messages.xml，在messages.xml中每条规则的提示语前添加前缀 **PASS-ALI**:
+  ![]({{"\img\posts_img\technology\如何在sonarQube的pmd插件中整合阿里开发规范\1.png" | prepend:site.url}})
 2. 然后将p3c-pmd打包，装到本地仓库 mvn clean install -Dgpg.skip
 3. 重新打包sonar-p3c-pmd工程，将打好的jar包放到sonarqube的 ..\extensions\plugins目录下，重启sonarqube。即可安装好整合好含有阿里开发规则的pmd插件。
 
 ### 2.1.4、修改pmd插件的显示名
 
 如果想修改pmd插件在sonarqube中的插件显示名，可以修改 sonar-p3c-pmd 工程中的org.sonar.plugins.pmd.PmdConstants类  Sring REPOSITORY_NAME 名字即可，如下图：
-
 ![]({{"\img\posts_img\technology\如何在sonarQube的pmd插件中整合阿里开发规范\5.png" | prepend:site.url}})
-
 ![]({{"\img\posts_img\technology\如何在sonarQube的pmd插件中整合阿里开发规范\2.png" | prepend:site.url}})
 
 
+
+```
+
+```
