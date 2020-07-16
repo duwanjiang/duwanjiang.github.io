@@ -14,13 +14,13 @@ future: true
 # SNS settings
 RSS: false
 
-weibo_username:     6274562588
-#zhihu_username:     s453600196
-cnblogs_username:     duwanjiang
-github_username:    duwanjiang
-twitter_username:   duwanjiang
-#facebook_username:  s453600196
-#linkedin_username:  firstname-lastname-idxxxx
+weibo_username: 6274562588
+#zhihu_username: s453600196
+cnblogs_username: duwanjiang
+github_username: duwanjiang
+twitter_username: duwanjiang
+#facebook_username: s453600196
+#linkedin_username: firstname-lastname-idxxxx
 
 
 
