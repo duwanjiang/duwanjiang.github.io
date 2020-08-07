@@ -1,7 +1,7 @@
 ---
 layout: 	post
 title: 		"Java知识合集"
-subtitle:	" "Java知识整理""
+subtitle:	" \"Java知识整理\""
 date:		2020-08-07 23:40:00
 author:		"duwanjiang"
 header-img:	"img/about-bg-walle.jpg"
@@ -13,7 +13,12 @@ tags:
 
 > “从现在开始实现你的梦想，就不晚 ”
 
+#《Java知识合集》
+这篇文章是我准备找工作时，自己花了2个月时间复习并整理的Java相关的知识合集，可能知识涵盖面不全，主要是整理了我平时容易忘记的内容，同时也希望可以帮助你进行知识的回顾，这里有两个博主的文章需要推荐给大家，他们这里的知识面很全，我也是借鉴了他们很多内容，望收藏：
+* https://github.com/Snailclimb/JavaGuide
+* https://github.com/CyC2018/CS-Notes
 
+同时也欢迎来我的Blog >>[传送门](http://www.duwanjiang.com)<<
 
 # 1、基础知识
 
@@ -22,7 +27,7 @@ tags:
 ### 1.1.1、线程有哪些基本状态?
 
 
-![]({{"imgposts_imgtechnologyjavaknowledgeCollection6bf58fc1-230b-4901-a94f-2e809738440e.jpg"|prepend:site.url}})
+![]({{"\img\posts_img\technology\java\knowledgeCollection\6bf58fc1-230b-4901-a94f-2e809738440e.jpg"|prepend:site.url}})
 
 ### 1.1.2、Synchronized的原理
 
@@ -42,17 +47,17 @@ tags:
 
 2. jdk1.6对锁做了哪些优化：偏向锁、轻量级锁、自旋锁、适应性自旋锁、锁消除、锁粗化等技术减少锁的开销。
 
-​    1. 偏向锁：当没有多线程竞争的情况下，虚拟机会使用CAS操作将第一个获取到锁的线程的ID记录到该对象的Mark Word之中，之后该线程执行同步代码块时，虚拟机不在进行同步操作，如果偏向锁失败，会升级为轻量级锁。
+	1. 偏向锁：当没有多线程竞争的情况下，虚拟机会使用CAS操作将第一个获取到锁的线程的ID记录到该对象的Mark Word之中，之后该线程执行同步代码块时，虚拟机不在进行同步操作，如果偏向锁失败，会升级为轻量级锁。
 
-​    2. 轻量级锁：轻量级锁不是来替代重量级锁，它减少了使用系统互斥量产生的性能开销，而是由偏向锁升级而来的，虚拟机使用CAS操作将锁对象的Mark Word交换为线程栈中的Lock Record的指针，如果锁竞争激烈，那么轻量级锁很快将膨胀为重量级锁。
+	2. 轻量级锁：轻量级锁不是来替代重量级锁，它减少了使用系统互斥量产生的性能开销，而是由偏向锁升级而来的，虚拟机使用CAS操作将锁对象的Mark Word交换为线程栈中的Lock Record的指针，如果锁竞争激烈，那么轻量级锁很快将膨胀为重量级锁。
 
-​    3. 自旋锁：轻量级锁失败后，虚拟机为了避免线程真实地在操作系统层面挂起，还会进行一项称为自旋锁的优化手段，也就是让后面来的线程尝试等待一会，而不直接进入挂起状态，看看持有锁的线程会不会很快释放锁，所以这里的等待实现就是执行一个忙循环，称之为自旋，默认执行次数为10次。
+	3. 自旋锁：轻量级锁失败后，虚拟机为了避免线程真实地在操作系统层面挂起，还会进行一项称为自旋锁的优化手段，也就是让后面来的线程尝试等待一会，而不直接进入挂起状态，看看持有锁的线程会不会很快释放锁，所以这里的等待实现就是执行一个忙循环，称之为自旋，默认执行次数为10次。
 
-​    4. 适应性自旋锁：是对自旋锁的改进，及自旋的时间不固定，而是和前一次同一个锁上的自旋时间以及锁的拥有者状态来决定的，如果上一次成功了，那虚拟机会认为这一次待定相比更长的时间也很有可能成功，虚拟机会越变越聪明。
+	4. 适应性自旋锁：是对自旋锁的改进，及自旋的时间不固定，而是和前一次同一个锁上的自旋时间以及锁的拥有者状态来决定的，如果上一次成功了，那虚拟机会认为这一次待定相比更长的时间也很有可能成功，虚拟机会越变越聪明。
 
-​   5. 锁消除：虚拟机及时编译器在运行时，如果检测到共享数据不可能存在竞争，就会消除该锁的同步，如：在使用StringBuffer拼接字符串时。
+	5. 锁消除：虚拟机及时编译器在运行时，如果检测到共享数据不可能存在竞争，就会消除该锁的同步，如：在使用StringBuffer拼接字符串时。
 
-​    6. 锁粗化：通常情况下锁的作用范围越小，对性能的开销越小，但是如果一系列的连续操作都对同一对象反复加锁和解锁时，就可以提升锁的粒度，达到减少锁的开销。
+	6. 锁粗化：通常情况下锁的作用范围越小，对性能的开销越小，但是如果一系列的连续操作都对同一对象反复加锁和解锁时，就可以提升锁的粒度，达到减少锁的开销。
 
 3. volatile原理：<https://www.jianshu.com/p/157279e6efdb>
 
@@ -61,39 +66,26 @@ tags:
 ### 1.1.4、公平锁与非公平锁区别
 
 1. 概念：
-
 公平锁：加锁时先看看队列中是否有等待的线程，如果有先处理队列中等待的线程，先到先得。
-
 非公平锁：加锁时直接尝试获取锁，获取不到再到队列末尾等待。 
 
 2. 优缺点：
-
 非公平锁性能高于公平锁5-10倍，减少了线程切换的时间，能更充分利用cpu的时间片。
 
 3. 使用场景：
-
 平时更多的是直接使用非公平锁，因为公平锁需要在多核情况下维护一个队列，如果当前线程不是队列的第一个就无法获取锁，增加了线程切换次数；但是如果线程业务执行时间远大于线程等待时间，那用非公平锁效果就不太明显了，但是用公平锁能更好的控制业务。
-
 
 
 ### 1.1.5、乐观锁与悲观锁
 
 1. 概念
-
 悲观锁：假设一定会发生并发冲突，通过阻塞其他线程来保证数据的完整性。
-
 乐观锁：假设不会发生并发冲突，直接不加锁完成某项更新，如果冲突就返回失败。 
-
 2. 例子
-
 悲观锁：Synchronized多线程同步，具有排他性，容易产生死锁。
-
 乐观锁：CAS机制，简单来说有3个操作数，当前内存变量值V，变量预期值A，即将更新值B，当需要更新变量的时候，判断V与A，如果相等，则更新B，否则将当前V值刷新到预期值A当中，然后再重新尝试比较更新。
-
 3. 适用场景
-
 乐观锁：适用于数据争用不严重/重试代价不大/需要响应速度快的场景
-
 悲观锁：适用于数据争用严重/重试代价大的场景
 
 
@@ -103,30 +95,23 @@ tags:
 #### 1.1.6.1、如何创建线程池
 
 1. 通过ThreadPoolExecutor创建：通过该类创建的线程池，能更清楚线程池的运行规则，避免资源的浪费
-
 2. 通过Executors创建，其中FixedThreadPool、SingleThreadExecutor、CachedThreadPool的内部都是通过ThreadPoolExecutor实现的，具体为：
-
-​    1. newFixedThreadPool：该方法返回一个固定线程数的线程池。当有新的任务提交时，如果有空的线程则立即执行，如果没有空闲则加入到一个队列中，待线程空闲时再按先进先出顺序执行。
-
-​    2. newSingleThreadExecutor：该方法返回只有一个线程的线程池。当有新的任务提交时，如果有空的线程则立即执行，如果没有空闲则加入到一个队列中，待线程空闲时再按先进先出顺序执行。
-
-​    3. newCachedThreadPool：该方法返回一个根据可根据实际线程数调整的线程池。当有新的任务提交时，如果有空闲则复用执行，如果没有则新创建一个线程来执行。
-
-​    4. newScheduledThreadPoolExecutor：该方法返回一个定时任务线程池，用于周期性的执行任务，可以定时执行或延时执行。
+	1. newFixedThreadPool：该方法返回一个固定线程数的线程池。当有新的任务提交时，如果有空的线程则立即执行，如果没有空闲则加入到一个队列中，待线程空闲时再按先进先出顺序执行。
+	2. newSingleThreadExecutor：该方法返回只有一个线程的线程池。当有新的任务提交时，如果有空的线程则立即执行，如果没有空闲则加入到一个队列中，待线程空闲时再按先进先出顺序执行。
+	3. newCachedThreadPool：该方法返回一个根据可根据实际线程数调整的线程池。当有新的任务提交时，如果有空闲则复用执行，如果没有则新创建一个线程来执行。
+	4. newScheduledThreadPoolExecutor：该方法返回一个定时任务线程池，用于周期性的执行任务，可以定时执行或延时执行。
 
 #### 1.1.6.2、ThreadPoolExecutor的饱和策略
 
 1. ThreadPoolExecutor.AbortPolicy：抛出RejectExecutionException来拒绝执行
-
 2. ThreadPoolExecutor.CallerRunsPolicy：使用启动线程池的主线程去执行被拒绝的任务，如果执行程序已关闭，则会丢弃该任务。
-
 3. ThreadPoolExecutor.DiscardPolicy：抛弃掉当前最新的任务。
-
 4. ThreadPoolExecutor.DiscardOldestPolicy：抛弃掉最老的未处理任务。
 
-####1.1.6.3、ThreadPoolExecutor的execute的执行流程
 
-![]({{"imgposts_imgtechnologyjavaknowledgeCollectionada9ee02-a27a-4087-bf37-d804335ed2d4.png"|prepend:site.url}})
+#### 1.1.6.3、ThreadPoolExecutor的execute的执行流程
+
+![]({{"\img\posts_img\technology\java\knowledgeCollection\ada9ee02-a27a-4087-bf37-d804335ed2d4.png"|prepend:site.url}})
 
 
 ### 1.1.7、AQS同步器
@@ -135,15 +120,12 @@ tags:
 
 1. 定义：AQS（AbstractQueuedSynchronizer）是一个在concurrent包下的，用来构建锁和同步器的框架，采用CLH队列锁来控制线程的阻塞和唤醒机制。处理模型如下图：
 
-![]({{"imgposts_imgtechnologyjavaknowledgeCollectioncf7e2e4e-da50-480e-bb23-fe716c6030e4.png"|prepend:site.url}})
-
+![]({{"\img\posts_img\technology\java\knowledgeCollection\cf7e2e4e-da50-480e-bb23-fe716c6030e4.png"|prepend:site.url}})
 
 
 2. 资源共享方式：
-
-​    1. 独占锁（Exclusive）：一次只能支持一个线程访问资源，可以分为“公平锁和非公平锁”，如：Reentrantlock。
-
-​    2. 共享锁（Share）：多个线程同时访问资源，如：CountDownLatch、Semaphore。
+	1. 独占锁（Exclusive）：一次只能支持一个线程访问资源，可以分为“公平锁和非公平锁”，如：Reentrantlock。
+	2. 共享锁（Share）：多个线程同时访问资源，如：CountDownLatch、Semaphore。
 
 3. 实现方式：AQS使用了模板方法模式，实现自定义同步器时，只需要将继承了AQS的使用者组合到其内部，并让使用者实现AQS对资源state的获取和释放，其中线程队列的等待维护已由AQS顶层实现好了，然后自定义同步器再调用使用者重写的AQS模板方法即可。
 
@@ -158,11 +140,8 @@ tags:
 （参考：<https://blog.csdn.net/qq_33314107/article/details/80271963>）
 
 1. 通过new方法
-
 2. 通过反射方法
-
 3. 通过Object的clone方法
-
 4. 通过序列化方法
 
 ## 1.3、注解
@@ -180,10 +159,8 @@ tags:
 1. 静态代理：是在运行前就确定了代理类与被代理类之间的关系，类似于装饰者模式，需要代理类和被代理类都实现相同的接口。
 
 2. 动态代理：是在运行时创建代理对象，一般有2中方式实现JDK动态代理和Cglib动态代理。
-
-​    1. JDK动态代理：只能代理接口，使用InvocationHandler接口和Proxy类实现
-
-​    2. Cglib动态代理：是类的代理，通过继承被代理类来实现对象的增强，使用Enhancer类和MethodInterceptor接口实现
+	1. JDK动态代理：只能代理接口，使用InvocationHandler接口和Proxy类实现
+	2. Cglib动态代理：是类的代理，通过继承被代理类来实现对象的增强，使用Enhancer类和MethodInterceptor接口实现
 
 (参考：<https://blog.csdn.net/flyfeifei66/article/details/81481222>)
 
@@ -199,7 +176,7 @@ tags:
 
 ## 1.5、集合
 
-![]({{"imgposts_imgtechnologyjavaknowledgeCollection0.19550936268073071.png"|prepend:site.url}})
+![]({{"\img\posts_img\technology\java\knowledgeCollection\0.19550936268073071.png"|prepend:site.url}})
 
 ### 1.5.1、ArrayList、LinkedList、Vector的区别
 
@@ -241,7 +218,7 @@ https://www.cnblogs.com/ZhaoxiCheung/p/Java-HashMap-Source-Analysis.html
 
 1. ConcurrentSkipListMap：线程安全，适合大并发情况下使用，数据结构为跳表，key是有序的且不能为空，value不能为null。
 
-![]({{"imgposts_imgtechnologyjavaknowledgeCollection0.8062861681475306.png"|prepend:site.url}})
+![]({{"\img\posts_img\technology\java\knowledgeCollection\0.8062861681475306.png"|prepend:site.url}})
 
 2. TreeMap：非线程安全，在结合Collections.synchronizedSortedMap方法下，适合小并发，数据结构为红黑树，key是有序的且不能为空，value允许为null。
 
@@ -249,7 +226,7 @@ https://www.cnblogs.com/ZhaoxiCheung/p/Java-HashMap-Source-Analysis.html
 
 ### 1.5.6、Queue
 
-![]({{"imgposts_imgtechnologyjavaknowledgeCollection0.34375776373510214.png"|prepend:site.url}})
+![]({{"\img\posts_img\technology\java\knowledgeCollection\0.34375776373510214.png"|prepend:site.url}})
 
 #### 1.5.6.1、LinkedBlockingQueue
 
@@ -276,7 +253,6 @@ https://www.cnblogs.com/ZhaoxiCheung/p/Java-HashMap-Source-Analysis.html
 是一个采用Reentrantlock（一把锁）保证线程安全的阻塞队列，它实现了BlockingQueue接口，采用**数组**实现，FIFO原则排序，队列必须指定大小。
 
 调用方法同LinkedBlockingQueue
-
 1. removeAt(int)方法：删除指定下标的元素，如果下标元素不是队首，那下标之后的元素都要整体移动。
 
 #### 1.5.6.3、SynchronousQueue
@@ -284,7 +260,6 @@ https://www.cnblogs.com/ZhaoxiCheung/p/Java-HashMap-Source-Analysis.html
 （参考：<https://www.jianshu.com/p/376d368cb44f>）
 
 是一个容量为0且使用LockSupport.park保证线程安全的阻塞队列，每次删除都需要等待插入，每次插入都需要等待删除。
-
 1. remove(Object)方法：直接返回false。
 
 #### 1.5.6.4、ConcurrentLinkedQueue
@@ -309,7 +284,7 @@ https://www.cnblogs.com/ZhaoxiCheung/p/Java-HashMap-Source-Analysis.html
 
 二叉堆是完全二叉树或近似完全二叉树，其父节点的键值总是和子节点的键值保持一定的序关系，且每个节点的子节点也是一个二叉堆。
 
-![]({{"imgposts_imgtechnologyjavaknowledgeCollection0.9260143840909643.png"|prepend:site.url}})
+![]({{"\img\posts_img\technology\java\knowledgeCollection\0.9260143840909643.png"|prepend:site.url}})
 
 #### 1.5.6.6、PriorityQueue
 
@@ -327,12 +302,11 @@ https://www.cnblogs.com/ZhaoxiCheung/p/Java-HashMap-Source-Analysis.html
 
 1. 按处理方式分类
 
-
-![]({{"imgposts_imgtechnologyjavaknowledgeCollection4dd3c6ea-5b4d-4102-96b9-361a69164cdd.jpg"|prepend:site.url}})
+![]({{"\img\posts_img\technology\java\knowledgeCollection\4dd3c6ea-5b4d-4102-96b9-361a69164cdd.jpg"|prepend:site.url}})
 
 2. 按对象分类
 
-![]({{"imgposts_imgtechnologyjavaknowledgeCollectiond8c04b27-0142-425e-9485-4c833d534fe9.jpg"|prepend:site.url}})
+![]({{"\img\posts_img\technology\java\knowledgeCollection\d8c04b27-0142-425e-9485-4c833d534fe9.jpg"|prepend:site.url}})
 
 
 # 2、JVM
@@ -343,10 +317,10 @@ https://www.cnblogs.com/ZhaoxiCheung/p/Java-HashMap-Source-Analysis.html
 
 ## 2.2、JVM内存划分
 
-![]({{"imgposts_imgtechnologyjavaknowledgeCollection76bc0116-8ee5-4bf1-9401-8c64cc9da76c.png"|prepend:site.url}})
+![]({{"\img\posts_img\technology\java\knowledgeCollection\76bc0116-8ee5-4bf1-9401-8c64cc9da76c.png"|prepend:site.url}})
 
 
-![]({{"imgposts_imgtechnologyjavaknowledgeCollection13884d30-cb5d-483a-84a2-69e635df6be3.png"|prepend:site.url}})
+![]({{"\img\posts_img\technology\java\knowledgeCollection\13884d30-cb5d-483a-84a2-69e635df6be3.png"|prepend:site.url}})
 
 ## 2.3、GC
 
@@ -362,7 +336,7 @@ https://www.cnblogs.com/ZhaoxiCheung/p/Java-HashMap-Source-Analysis.html
 
 ### 2.3.2、GC收集器有哪些
 
-![]({{"imgposts_imgtechnologyjavaknowledgeCollection0.5097002651463372.png"|prepend:site.url}})
+![]({{"\img\posts_img\technology\java\knowledgeCollection\0.5097002651463372.png"|prepend:site.url}})
 
 （参考:<https://www.cnblogs.com/super-jing/p/10795099.html>)
 
@@ -370,9 +344,9 @@ https://www.cnblogs.com/ZhaoxiCheung/p/Java-HashMap-Source-Analysis.html
 
 2. **ParNew收集器**：它是Serial收集器的多线程版本，也会Stop-The-World，也是新生代收集器，采用复制算法，当JVM设置为CMS时，它是默认的新生代收集器。
 
-​    1. **并行**：多条回收线程同时并行执行，但是用户线程处于等待状态。
+	1. **并行**：多条回收线程同时并行执行，但是用户线程处于等待状态。
 
-​    2. **并发**：用户和回收线程同时执行（并不一定是并行，可能是交替执行），用户线程继续工作，回收线程运行在另一个CPU上。
+	2. **并发**：用户和回收线程同时执行（并不一定是并行，可能是交替执行），用户线程继续工作，回收线程运行在另一个CPU上。
 
 3. **Parallel Scavenge收集器**：它是并行的新生代收集器，采用复制算法，它可以控制JVM的吞吐量，可以配置“停顿时间”和“吞吐量大小”。
 
@@ -382,13 +356,13 @@ https://www.cnblogs.com/ZhaoxiCheung/p/Java-HashMap-Source-Analysis.html
 
 6. **CMS（Concurrent Mark Sweep）收集器**：（JDK1.5）它是并发执行的老年代收集器，采用“标记-清除”算法，目标是减少用户线程的停顿，主要采用4个步骤：
 
-​    1. 初始标记：stop-the-world，标记GCRoots（被GCRoots引用的对象不被GC回收）能直接关联的对象，时间很短。
+	1. 初始标记：stop-the-world，标记GCRoots（被GCRoots引用的对象不被GC回收）能直接关联的对象，时间很短。
 
-​    2. 并发标记：恢复用户线程，标记GCRoots可达性分析的过程。
+	2. 并发标记：恢复用户线程，标记GCRoots可达性分析的过程。
 
-​    3. 重新标记：stop-the-world，修正并发标记期间用户线程使标记发生变化的对象，时间介于1-2步骤之间。
+	3. 重新标记：stop-the-world，修正并发标记期间用户线程使标记发生变化的对象，时间介于1-2步骤之间。
 
-​    4. 并发清除：恢复用户线程，同时清理死亡对象。
+	4. 并发清除：恢复用户线程，同时清理死亡对象。
 
 优点：并发收集，停顿少。
 
@@ -396,13 +370,13 @@ https://www.cnblogs.com/ZhaoxiCheung/p/Java-HashMap-Source-Analysis.html
 
 7. **G1收集器**：（JDK1.7）他是唯一一个同时适用于新生代和老年代的收集器，有如下特点：
 
-​    1. **并发与并行**：G1能够很好的利用多CPU、多核的优势，缩短stop-the-world的停顿时间。
+	1. **并发与并行**：G1能够很好的利用多CPU、多核的优势，缩短stop-the-world的停顿时间。
 
-​    2. **分代收集**：保留了年代划分的概念，也分有年轻代和老年代，但是它们不是物理隔离的了，而是由若干个（5%-60%）可以不连续的Region的集合组成。
+	2. **分代收集**：保留了年代划分的概念，也分有年轻代和老年代，但是它们不是物理隔离的了，而是由若干个（5%-60%）可以不连续的Region的集合组成。
 
-​    3. **空间整合**：从整体来看是“标记-整理”算法，从2个region间来看是“复制算法”。
+	3. **空间整合**：从整体来看是“标记-整理”算法，从2个region间来看是“复制算法”。
 
-​    4. **可预测停顿**：他和CMS都是以降低停顿时间为目的，还建立了可预测的停顿时间模型，因为他不像以往的收集器都是对整个年轻代或老年代内存进行回收，而是将内存划分为若干个region，并且跟踪Region中的垃圾堆积价值的大小，维护一个优先列表，最后根据允许的收集时间来回收最大价值的Region。
+	4. **可预测停顿**：他和CMS都是以降低停顿时间为目的，还建立了可预测的停顿时间模型，因为他不像以往的收集器都是对整个年轻代或老年代内存进行回收，而是将内存划分为若干个region，并且跟踪Region中的垃圾堆积价值的大小，维护一个优先列表，最后根据允许的收集时间来回收最大价值的Region。
 
 (参考：<https://blog.csdn.net/coderlius/article/details/79272773>)
 
@@ -464,11 +438,11 @@ MVCC（Muti-Version Concurrency Control）多版本并发控制，在MySQL的Inn
 
 1. 版本链：是在每张表中有3个隐藏列**事务id**、**回滚指针**和**隐藏自增ID**。
 
-​    1. 事务Id（db_trx_id）：最近修改（修改/插入）事务ID，记录创建这条记录或最后一次修改该记录的事务ID。
+	1. 事务Id（db_trx_id）：最近修改（修改/插入）事务ID，记录创建这条记录或最后一次修改该记录的事务ID。
 
-​    2. 回滚指针(db_roll_pointer)：指向这条记录的上一个版本地址，存储于undo日志中。
+	2. 回滚指针(db_roll_pointer)：指向这条记录的上一个版本地址，存储于undo日志中。
 
-​    3. 隐藏自增ID(db_row_id):是隐藏的主键，如果数据表没有主键，则InnoDB会自动以该字段创建一个聚簇索引。
+	3. 隐藏自增ID(db_row_id):是隐藏的主键，如果数据表没有主键，则InnoDB会自动以该字段创建一个聚簇索引。
 
 2. ReadView：是事务进行快照读时产生的一个读视图，并记录了当前快照时活跃的事务ID列表，通过这个列表来判断当前查询是否可见，原则是用trx_id<up_limit_id 或 trx_id < low_limit_id && 活动列表不包含trx_id，则表示该trx_id的记录可见；**RC**是每次快照读都会创建ReadView，**RR**是事务开始的第一个快照读创建一个ReadView，该事务之后的快照读不在创建新的。
 
@@ -483,27 +457,23 @@ MVCC（Muti-Version Concurrency Control）多版本并发控制，在MySQL的Inn
 
 1. 按照粒度分类
 
-​    1. 表级锁：是锁定整张表，粒度较大，并发低，消耗资源少，不会死锁，MySIAM和InnoDB都支持。InnoDB还支持2个表级锁：
+	1. 表级锁：是锁定整张表，粒度较大，并发低，消耗资源少，不会死锁，MySIAM和InnoDB都支持。InnoDB还支持2个表级锁：
 
-​        1. 意向共享锁（IS）：在插入共享锁之前需要先取得该表的IS锁，表示准备加入共享锁。
+		1. 意向共享锁（IS）：在插入共享锁之前需要先取得该表的IS锁，表示准备加入共享锁。
+		2. 意向排它锁（IX）：在插入排它锁之前需要先取得该表的IX锁，表示准备加入排它锁。
 
-​        2. 意向排它锁（IX）：在插入排它锁之前需要先取得该表的IX锁，表示准备加入排它锁。
+	2. 行级锁：是锁定需要操作的一行记录，粒度小，并发高，消耗资源多，加锁慢，会产生死锁，只有InnoDB支持
 
-​    2. 行级锁：是锁定需要操作的一行记录，粒度小，并发高，消耗资源多，加锁慢，会产生死锁，只有InnoDB支持
+		1. Record lock：对索引项加锁，锁定符合条件的行，其他事务不能再修改、删除改行。
+		2. Gap lock：称为**“间隙锁”**，对索引行的前后间隙加锁，锁定一定范围的数据，其他事务无法在该范围内插入数据，防止增加幻影行。
 
-​        1. Record lock：对索引项加锁，锁定符合条件的行，其他事务不能再修改、删除改行。
-
-​        2. Gap lock：称为**“间隙锁”**，对索引行的前后间隙加锁，锁定一定范围的数据，其他事务无法在该范围内插入数据，防止增加幻影行。
-
-​        3. Next-key lock：是Gap lock + Record lock的结合，锁定一个范围，并锁定记录本身，对于查询都是采用该方法，主要解决幻影读。
-
-​        （参考：<https://www.cnblogs.com/zhoujinyi/p/3435982.html>）
+	3. Next-key lock：是Gap lock + Record lock的结合，锁定一个范围，并锁定记录本身，对于查询都是采用该方法，主要解决幻影读。
+（参考：<https://www.cnblogs.com/zhoujinyi/p/3435982.html>）
 
 2. 按照是否可写分类
 
-​    1. 共享锁（S）：又被称为读锁，添加了读锁后可以再次加读锁，但不能添加排它锁，添加了该锁只能查询数据。
-
-​    2. 排它锁（X）：又被称为写锁，添加了写锁后，不能再添加其他锁，但是添加了该锁可以查询、插入、删除、更新数据。
+	1. 共享锁（S）：又被称为读锁，添加了读锁后可以再次加读锁，但不能添加排它锁，添加了该锁只能查询数据。
+	2. 排它锁（X）：又被称为写锁，添加了写锁后，不能再添加其他锁，但是添加了该锁可以查询、插入、删除、更新数据。
 
 ### 3.1.6、快照读和当前读
 
@@ -519,47 +489,46 @@ MVCC（Muti-Version Concurrency Control）多版本并发控制，在MySQL的Inn
 
 1. 单表优化：
 
-​    1. 字段优化：尽量使用适当长的字段，如用SMALLINT能满足就不要用INT，VARCHAR的长度只分布实际使用长度，使用TIMESTAMP代替DATETIME等
+	1. 字段优化：尽量使用适当长的字段，如用SMALLINT能满足就不要用INT，VARCHAR的长度只分布实际使用长度，使用TIMESTAMP代替DATETIME等
 
-​    2. 索引优化：索引不是建的越多越好，可以根据where和order by字段来建立，并通过explain进行分析是否使用了索引，值很稀少的字段不适合建索引，如：性别；最好不要使用外键；
+	2. 索引优化：索引不是建的越多越好，可以根据where和order by字段来建立，并通过explain进行分析是否使用了索引，值很稀少的字段不适合建索引，如：性别；最好不要使用外键；
 
-​    3. sql优化：开启慢查询日志slow_query_log=1来分析查询较慢的sql；不做列运算；不用select *；or写成in；少用join；使用同类型比较，如：'123'='123'；避免使用!=和<>；连续值使用between替代in；不要全表查询使用limit。
+	3. sql优化：开启慢查询日志slow_query_log=1来分析查询较慢的sql；不做列运算；不用select *；or写成in；少用join；使用同类型比较，如：'123'='123'；避免使用!=和<>；连续值使用between替代in；不要全表查询使用limit。
 
-​    4. 引擎选择：MySIAM适合Select密集型的表，InnoDB适合insert和update密集型的表。
+	4. 引擎选择：MySIAM适合Select密集型的表，InnoDB适合insert和update密集型的表。
 
-​    5. 参数调优：提高数据缓存innodb_buffer_pool_size、索引缓存key_buffer_size、查询缓存query_cache_size等。
+	5. 参数调优：提高数据缓存innodb_buffer_pool_size、索引缓存key_buffer_size、查询缓存query_cache_size等。
 
-​    6. 提升硬件：增强服务器的cpu和存储读写速度都对数据库有提升。
+	6. 提升硬件：增强服务器的cpu和存储读写速度都对数据库有提升。
 
-​    7. 读写分离：通过主库写入数据，从库读取数据，主库一般为1台，减少复杂度
+	7. 读写分离：通过主库写入数据，从库读取数据，主库一般为1台，减少复杂度
 
-​    8. 缓存：缓存可以发生在
+	8. 缓存：缓存可以发生在
 
-​        1. 数据库层：通过系统参数调节
+		1. 数据库层：通过系统参数调节
+		2. 数据访问层：使用Mybatis对sql的缓存，主要缓存持久化对象
 
-​        2. 数据访问层：使用Mybatis对sql的缓存，主要缓存持久化对象
+		3. 应用服务层：使用编程的手段对缓存做更精细的控制，主要缓存数据传输对象
 
-​        3. 应用服务层：使用编程的手段对缓存做更精细的控制，主要缓存数据传输对象
+		4. web层：主要做页面缓存如CDN等
 
-​        4. web层：主要做页面缓存如CDN等
+		5. 浏览器客户单端：主要是浏览器的缓存
 
-​        5. 浏览器客户单端：主要是浏览器的缓存
+	9. 垂直拆分：就是将一张表的多个字段拆分到不同的表中，通过主键来关联，可以减少单行数据，减少IO，充分利用缓存，但是依然存在单表数据量过大问题
 
-​    9. 垂直拆分：就是将一张表的多个字段拆分到不同的表中，通过主键来关联，可以减少单行数据，减少IO，充分利用缓存，但是依然存在单表数据量过大问题
+	10. 水平拆分：
 
-​    10. 水平拆分：
+		* 通过表分区方式，减少单个表的压力，有四种分区list、range、key、hash等方式，但是单表最多支持1024个分区表
 
-​        1. 通过表分区方式，减少单个表的压力，有四种分区list、range、key、hash等方式，但是单表最多支持1024个分区表
+		* 通过分布式数据分片方式：通过某种策略将数据分片存储，可以用库内分表和分库等方式，能支持非常大数据量
 
-​        2. 通过分布式数据分片方式：通过某种策略将数据分片存储，可以用库内分表和分库等方式，能支持非常大数据量
+		1. 库内分表：只能解决单表数据量过大问题，但是数据还在单台服务器上，性能提升不大，前面的分区表也是库内分表。
 
-​            1. 库内分表：只能解决单表数据量过大问题，但是数据还在单台服务器上，性能提升不大，前面的分区表也是库内分表。
+		2. 分库：可以将数据放在不同的数据库中，进行分布式存储，但是需要保证事务一致性问题、夸库join、夸库合并分页等问题，主要的解决方案分：
 
-​            2. 分库：可以将数据放在不同的数据库中，进行分布式存储，但是需要保证事务一致性问题、夸库join、夸库合并分页等问题，主要的解决方案分：
+			1. 客户端框架：主要分片逻辑在应用层，通过修改或封装jdbc层实现，如：当当网的shardingJDBC、阿里的TDDL等
 
-​                1. 客户端框架：主要分片逻辑在应用层，通过修改或封装jdbc层实现，如：当当网的shardingJDBC、阿里的TDDL等
-
-​                2. 中间件代理框架：在应用和数据库之间加了一层代理框架，分片逻辑在中间件中，如：MyCat、360的Atlas、网页的DDB等方案。
+			2. 中间件代理框架：在应用和数据库之间加了一层代理框架，分片逻辑在中间件中，如：MyCat、360的Atlas、网页的DDB等方案。
 
 
 
@@ -587,24 +556,24 @@ MVCC（Muti-Version Concurrency Control）多版本并发控制，在MySQL的Inn
 
 2. SQL语句的执行过程：
 
-​    1. 查询语句：连接器权限校验->查询缓存->分析器->优化器->权限校验->执行器->引擎
+	1. 查询语句：连接器权限校验->查询缓存->分析器->优化器->权限校验->执行器->引擎
 
-​    2. 更新语句：分析器->权限校验->执行器->引擎->redolog prepare -> binlog -> redolog commit
+	2. 更新语句：分析器->权限校验->执行器->引擎->redolog prepare -> binlog -> redolog commit
 （参考：<https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247485097&idx=1&sn=84c89da477b1338bdf3e9fcd65514ac1&chksm=cea24962f9d5c074d8d3ff1ab04ee8f0d6486e3d015cfd783503685986485c11738ccb542ba7&token=79317275&lang=zh_CN%23rd>）
 
 ### 3.1.11、一条SQL执行很慢的原因
 
 1. 偶尔慢：说明这条SQL书写没有问题，可能有如下原因
 
-​    1. 数据库在刷新脏页：（1）当redolog满了，需要暂停其他操作将log中的内容写入磁盘（2）当内存不足时，查询需要申请更多的内存，就需要淘汰更多的内存数据页，刚好在淘汰脏页时，就需要将数据输入磁盘中（3）当系统认为当前是空闲时，就会刷新脏页。（4）数据库在关闭时，需要刷新所有脏页。
+	1. 数据库在刷新脏页：（1）当redolog满了，需要暂停其他操作将log中的内容写入磁盘（2）当内存不足时，查询需要申请更多的内存，就需要淘汰更多的内存数据页，刚好在淘汰脏页时，就需要将数据输入磁盘中（3）当系统认为当前是空闲时，就会刷新脏页。（4）数据库在关闭时，需要刷新所有脏页。
 
-​    2. 拿不到锁：我们需要查询的表或某行数据被加了锁，所以需要等待锁释放。
+	2. 拿不到锁：我们需要查询的表或某行数据被加了锁，所以需要等待锁释放。
 
 2. 一直慢：可能SQL语句有问题
 
-​    1. 没使用索引：（1）可能是没创建索引（2）有索引但是没用到，如：字段进行了运算或使用了函数操作，导致无法使用索引
+	1. 没使用索引：（1）可能是没创建索引（2）有索引但是没用到，如：字段进行了运算或使用了函数操作，导致无法使用索引
 
-​    2. 数据库选错了索引：由于统计的失误，导致系统没有走索引，而是全表扫描，即当语句中有多个索引的时候，系统可能选错索引
+	2. 数据库选错了索引：由于统计的失误，导致系统没有走索引，而是全表扫描，即当语句中有多个索引的时候，系统可能选错索引
 
 
 
@@ -656,37 +625,36 @@ redis内部使用了文件事件处理器（File Event Handler），由于该事
 
 **解决方法**：
 
-​    1. 缓存无效key：将缓存和DB中都没有的key进行缓存，并设置过期时间，缺点是浪费空间，不能根本解决问题。
+	1. 缓存无效key：将缓存和DB中都没有的key进行缓存，并设置过期时间，缺点是浪费空间，不能根本解决问题。
 
-​    2. 布隆过滤器：把所有请求可能存在的key都放在布隆过滤器中，当请求的key不在过滤器中时，则直接返回错误。Bloom过滤器是由位数组和hash函数组成的数据结构，它只能判断数据一定不存在，不能判断数据一定存在。
-
-​    （参考：<https://github.com/Snailclimb/JavaGuide/blob/master/docs/dataStructures-algorithms/data-structure/bloom-filter.md> 或 <https://www.cnblogs.com/clarencezzh/p/11439193.html>）
+	2. 布隆过滤器：把所有请求可能存在的key都放在布隆过滤器中，当请求的key不在过滤器中时，则直接返回错误。Bloom过滤器是由位数组和hash函数组成的数据结构，它只能判断数据一定不存在，不能判断数据一定存在。
+（参考：<https://github.com/Snailclimb/JavaGuide/blob/master/docs/dataStructures-algorithms/data-structure/bloom-filter.md> 或 <https://www.cnblogs.com/clarencezzh/p/11439193.html>）
 
 2. 缓存雪崩：同一时间大量缓存失效，导致请求落在DB上，造成数据库短时间承受大量请求而崩溃。
 
 **解决方法**：
 
-​    1. 在缓存失效后，使用锁或队列限制读取数据库的线程数。
+	1. 在缓存失效后，使用锁或队列限制读取数据库的线程数。
 
-​    2. 如果能预知并发的情况下，可以通过reload机制手动预先更新缓存。
+	2. 如果能预知并发的情况下，可以通过reload机制手动预先更新缓存。
 
-​    3. 不同的key设置不同的过期时间，尽量让缓存失效时间均匀。
+	3. 不同的key设置不同的过期时间，尽量让缓存失效时间均匀。
 
-​    4. 做二级缓存或者双缓存策略，A1为原始缓存，A2为拷贝缓存，A1的失效时间比A2短，当A1失效时，可以访问A2。
+	4. 做二级缓存或者双缓存策略，A1为原始缓存，A2为拷贝缓存，A1的失效时间比A2短，当A1失效时，可以访问A2。
 
-​    5. 尽量保证Redis集群的高可用，发现机器宕机能尽快补上，并设置合理的内存淘汰机制。
+	5. 尽量保证Redis集群的高可用，发现机器宕机能尽快补上，并设置合理的内存淘汰机制。
 
 3. 热点key：一个热点信息，在大量并发请求时，缓存过期，刚好构建该缓存需要复杂计算或多个依赖，导致系统崩溃。
 
 **解决方法**：
 
-​    1. 使用互斥锁：一次只能一个线程来构建缓存，其他线程重新从缓存获取数据
+	1. 使用互斥锁：一次只能一个线程来构建缓存，其他线程重新从缓存获取数据
 
-​    2. 提前使用互斥锁：给key设置2个过期时间timeout1和timeout2且timeout1<timeout2，timeout2为Redis实际过期时间，当到达timeout1时，重构缓存
+	2. 提前使用互斥锁：给key设置2个过期时间timeout1和timeout2且timeout1<timeout2，timeout2为Redis实际过期时间，当到达timeout1时，重构缓存
 
-​    3. 永不过期：设置Redis过期时间，通过异步线程来设置逻辑过期，并更新缓存
+	3. 永不过期：设置Redis过期时间，通过异步线程来设置逻辑过期，并更新缓存
 
-​    4. 资源保护：使用hystrix进行限流
+	4. 资源保护：使用hystrix进行限流
 
 ### 3.2.4、内存淘汰机制
 
@@ -724,7 +692,7 @@ Redis的持久化分为 快照（RDB）和文件追加（AOF）
 
 2. 文件追加持久化（AOF）：可以每秒或Always将操作日志追加到AOF文件中。它比RDB完整性高，但是记录较多，会影响数据恢复的效率。
 
-​    1. AOF重写机制：当AOF大小达到阈值时（AOF大小超过上次rewrite后文件大小的设定百分比且大小超过设定值），Redis会新创建一个线程直接从内存中读取数据写入到新的AOF临时文件中，写完后替换原有AOF文件，达到瘦身的目的。
+	* AOF重写机制：当AOF大小达到阈值时（AOF大小超过上次rewrite后文件大小的设定百分比且大小超过设定值），Redis会新创建一个线程直接从内存中读取数据写入到新的AOF临时文件中，写完后替换原有AOF文件，达到瘦身的目的。
 
 ### 3.2.6、Redis数据结构及应用场景
 
@@ -762,15 +730,15 @@ Redis的持久化分为 快照（RDB）和文件追加（AOF）
 
 3. 五层协议体系结构：物理层、链路层、网络层、传输层、应用层
 
-​    1. 应用层：直接为应用进程之间的通信和交互提供服务，对于不同的应用需要不同的应用层协议，如：DNS、HTTP、FTP、SMTP等。
+	1. 应用层：直接为应用进程之间的通信和交互提供服务，对于不同的应用需要不同的应用层协议，如：DNS、HTTP、FTP、SMTP等。
 
-​    2. 传输层：为2台计算机中进程提供通用的数据传输服务，由于一台计算机有多个进程，所以传输层一般具有重用和分用功能。**“重用”**即应用层多个进程可以同时使用传输层协议，**“分用”**即传输层在接收到数据之后可以分发给相应的应用层进程。
+	2. 传输层：为2台计算机中进程提供通用的数据传输服务，由于一台计算机有多个进程，所以传输层一般具有重用和分用功能。**“重用”**即应用层多个进程可以同时使用传输层协议，**“分用”**即传输层在接收到数据之后可以分发给相应的应用层进程。
 
-​    3. 网络层：保证2台计算机在路由和交互节点之间数据的及时送达，对传输层的数据包或报文段封装成分组（即：包）进行传送。
+	3. 网络层：保证2台计算机在路由和交互节点之间数据的及时送达，对传输层的数据包或报文段封装成分组（即：包）进行传送。
 
-​    4. 链路层：2台主机间有很多一段一段的链路，该协议保证2个相邻节点之间的帧传输，他有对帧的查错和纠错的功能。
+	4. 链路层：2台主机间有很多一段一段的链路，该协议保证2个相邻节点之间的帧传输，他有对帧的查错和纠错的功能。
 
-​    5. 物理层：实现2台计算机之间比特流的透明传送，尽可能屏蔽物理传输介质与物理设备间的差异。
+	5. 物理层：实现2台计算机之间比特流的透明传送，尽可能屏蔽物理传输介质与物理设备间的差异。
 
 
 
@@ -808,21 +776,21 @@ Redis的持久化分为 快照（RDB）和文件追加（AOF）
 
 1. 原因：TCP是字节流，会把应用发送的数据拆分为大小不能的无结构字节流分组，没有边界，而且TCP头部也没有记录分组大小，所以就会导致
 
-​    1. 要发送的数据大于缓冲区剩余空间，被拆包
+	1. 要发送的数据大于缓冲区剩余空间，被拆包
 
-​    2. 要发送数据大于缓冲区最大空间长度，被拆包
+	2. 要发送数据大于缓冲区最大空间长度，被拆包
 
-​    3. 要发送数据小于缓冲区大小，TCP会将多次写入缓冲区的数据一次发送出去，产生粘包
+	3. 要发送数据小于缓冲区大小，TCP会将多次写入缓冲区的数据一次发送出去，产生粘包
 
-​    4. 接收方应用层没有及时读取缓冲区数据，导致粘包
+	4. 接收方应用层没有及时读取缓冲区数据，导致粘包
 
 2. 解决方法：关键在于如何给每个数据包添加边界
 
-​    1. 发送端给每个数据包添加首部，首部中至少包含数据包的长度
+	1. 发送端给每个数据包添加首部，首部中至少包含数据包的长度
 
-​    2. 发送端给每个数据包之间添加特殊字符进行分隔
+	2. 发送端给每个数据包之间添加特殊字符进行分隔
 
-​    3. 发送端给每个数据包封装为固定长度，不足可以用0填充
+	3. 发送端给每个数据包封装为固定长度，不足可以用0填充
 
 
 
@@ -853,12 +821,11 @@ ET：立即处理，当检测到描述符事件通知应用程序，应用程序
 ET模式减少了epoll被重复触发的次数，效率比LT高。我们在使用ET的时候，必须采用非阻塞套接口，避免某文件句柄在阻塞读或阻塞写的时候将其他文件描述符的任务饿死
 
 优点：
+	1. 没有最大并发连接的限制
 
-​    1. 没有最大并发连接的限制
+	2. 只有活跃可用的fd才会调用callback函数
 
-​    2. 只有活跃可用的fd才会调用callback函数
-
-​    3. 内存拷贝是利用mmap()文件映射内存的方式加速与内核空间的消息传递，减少复制开销。（内核与用户空间共享一块内存）
+	3. 内存拷贝是利用mmap()文件映射内存的方式加速与内核空间的消息传递，减少复制开销。（内核与用户空间共享一块内存）
 
 ### 4.8.2 BIO,NIO,AIO 有什么区别?
 
@@ -908,15 +875,15 @@ ET模式减少了epoll被重复触发的次数，效率比LT高。我们在使�
 
 1. 第一阶段：
 
-​    1. Proposor提出预案编号N，并向一半以上的Acceptor发送**预案**编号N的prepare请求
+	1. Proposor提出预案编号N，并向一半以上的Acceptor发送**预案**编号N的prepare请求
 
-​    2. 如果一个Acceptor接收到**预案**编号N，且N大于该Acceptor已经响应所有prepare请求的编码，那么它会将已经响应的最大编号的**提案**返回给Proposor，同时该Acceptor也不再接收编号小于N的**提案**。
+	2. 如果一个Acceptor接收到**预案**编号N，且N大于该Acceptor已经响应所有prepare请求的编码，那么它会将已经响应的最大编号的**提案**返回给Proposor，同时该Acceptor也不再接收编号小于N的**提案**。
 
 2. 第二阶段：
 
-​    1. Proposor对超过一半接受的**预案**返回值[N,V]再发送**提案**给Acceptor，注意：V为第一步收到响应中最大编号的**提案**的值，如果第一步响应中不包含**提案**，则Proposor可以定义任意值为V。
+	1. Proposor对超过一半接受的**预案**返回值[N,V]再发送**提案**给Acceptor，注意：V为第一步收到响应中最大编号的**提案**的值，如果第一步响应中不包含**提案**，则Proposor可以定义任意值为V。
 
-​    2. 如果Acceptor收到一个编号为N的accept请求，只要该Acceptor没有对编号大于N的prepare请求做出过响应，它就接受该**提案**。
+	2. 如果Acceptor收到一个编号为N的accept请求，只要该Acceptor没有对编号大于N的prepare请求做出过响应，它就接受该**提案**。
 
 ![Paxos算法流程]({{"\img\posts_img\technology\java\knowledgeCollection\0.9201595354970573.png"|prepend:site.url}})
 
@@ -956,25 +923,25 @@ ET模式减少了epoll被重复触发的次数，效率比LT高。我们在使�
 
 6. 红黑树：基于二叉排序树，
 
-​    1. 根节点颜色为黑
+	1. 根节点颜色为黑
 
-​    2. 红节点的左右子节点必须为黑色
+	2. 红节点的左右子节点必须为黑色
 
-​    3. 所有叶子节点必须为黑色的空节点
+	3. 所有叶子节点必须为黑色的空节点
 
-​    4. 根节点到所有叶子节点的黑节点数相同
+	4. 根节点到所有叶子节点的黑节点数相同
 
 7. B树（B-树）：如果该B树有M阶，他有如下特点
 
-​    1. 根节点的孩子数[2,M]
+	1. 根节点的孩子数[2,M]
 
-​    2. 除根节点其余非叶子节点包含k-1个关键字，k个孩子，其中M/2 <= k <=M，向上取整
+	2. 除根节点其余非叶子节点包含k-1个关键字，k个孩子，其中M/2 <= k <=M，向上取整
 
-​    3. 每个子叶节点包含k-1个元素，其中M/2 <= k <=M，向上取整
+	3. 每个子叶节点包含k-1个元素，其中M/2 <= k <=M，向上取整
 
-​    4. 所有子叶节点都在同一层
+	4. 所有子叶节点都在同一层
 
-​    5. 每个节点有k-1个关键字时，会将节点拆为k段，分别指向k个儿子，同时满足查找树的大小关系。
+	5. 每个节点有k-1个关键字时，会将节点拆为k段，分别指向k个儿子，同时满足查找树的大小关系。
 
 （参考：<https://blog.csdn.net/login_sonata/article/details/75268075> 或 <https://mp.weixin.qq.com/s?__biz=MzI2NjA3NTc4Ng==&mid=2652079363&idx=1&sn=7c2209e6b84f344b60ef4a056e5867b4&chksm=f1748ee6c60307f084fe9eeff012a27b5b43855f48ef09542fe6e56aab6f0fc5378c290fc4fc&scene=0&pass_ticket=75GZ52L7yYmRgfY0HdRdwlWLLEqo5BQSwUcvb44a7dDJRHFf49nJeGcJmFnj0cWg#rd>）
 
@@ -984,9 +951,9 @@ ET模式减少了epoll被重复触发的次数，效率比LT高。我们在使�
 
 
 
-​    1. 非子叶节点不保存数据，只用来索引，所有叶子节点存储指向数据的指针（B树所有节点都可以指向数据），且非叶子节点只存储孩子中最大（小）关键字
+	1. 非子叶节点不保存数据，只用来索引，所有叶子节点存储指向数据的指针（B树所有节点都可以指向数据），且非叶子节点只存储孩子中最大（小）关键字
 
-​    2. 所有叶子节点在同一层且构成一个链表，可以按照关键字大小排序，所以通过链表进行范围查询（B树需要重复的中序遍历进行范围查询）
+	2. 所有叶子节点在同一层且构成一个链表，可以按照关键字大小排序，所以通过链表进行范围查询（B树需要重复的中序遍历进行范围查询）
 
 ## 6.2、胜者数、败者树
 
@@ -1002,33 +969,33 @@ ET模式减少了epoll被重复触发的次数，效率比LT高。我们在使�
 
 1. **匿名管道**：
 
-​    1. 只能用于父子、兄弟进程间通信
+	1. 只能用于父子、兄弟进程间通信
 
-​    2. 先进先出的无格式字节流，不能进行定位读写
+	2. 先进先出的无格式字节流，不能进行定位读写
 
-​    3. 只支持单向数据流(读/写)，没有名字
+	3. 只支持单向数据流(读/写)，没有名字
 
-​    4. 管道的缓冲区是有限的
+	4. 管道的缓冲区是有限的
 
 2. **有名管道**
 
-​    1. 有名管道已磁盘文件的方式存在，可以实现本机任意两个进程通信
+	1. 有名管道已磁盘文件的方式存在，可以实现本机任意两个进程通信
 
-​    2. 无名管道阻塞：无名管道无需打开，创建时直接返回文件描述符，在读写时确定对方的存在，否则退出。当缓冲区满时，写进程阻塞，当缓冲区空时，读进程阻塞。
+	2. 无名管道阻塞：无名管道无需打开，创建时直接返回文件描述符，在读写时确定对方的存在，否则退出。当缓冲区满时，写进程阻塞，当缓冲区空时，读进程阻塞。
 
-​    3. 有名管道阻塞：打开时需要确定对方的存在，否则将阻塞。即：以读方式打开某管道，在此之前必须有进程以写方式打开此管道，否则阻塞。但也可以一个进程以读写模式打开，则不会阻塞。
+	3. 有名管道阻塞：打开时需要确定对方的存在，否则将阻塞。即：以读方式打开某管道，在此之前必须有进程以写方式打开此管道，否则阻塞。但也可以一个进程以读写模式打开，则不会阻塞。
 
 3. **信号(Signal)**：是Linux系统中用于进程间相互通信或操作的一种机制，如：软件异常、用户注销、Ctrl+C 退出等
 
 4. **消息队列**：
 
-​    1. 是具有特定格式的消息链表，存在内存中并有消息队列标识
+	1. 是具有特定格式的消息链表，存在内存中并有消息队列标识
 
-​    2. 消息队列允许一个或多个进程向它写入和读取消息
+	2. 消息队列允许一个或多个进程向它写入和读取消息
 
-​    3. 管道和消息队列的通信数据都是先进先出的原则，但是消息队列可以实现消息的随机查询，也可以按照类型读取，比FIFO更有优势
+	3. 管道和消息队列的通信数据都是先进先出的原则，但是消息队列可以实现消息的随机查询，也可以按照类型读取，比FIFO更有优势
 
-​    4. 目前主要有2种类型的消息队列：POSIX消息队列和System V消息队列，SystemV是内核持续的，只有内核重启或者人工删除队列才会删除。
+	4. 目前主要有2种类型的消息队列：POSIX消息队列和System V消息队列，SystemV是内核持续的，只有内核重启或者人工删除队列才会删除。
 
 5. **共享内存**：是一种效率高的通信方式，进程直接读写内存，不需要任何数据拷贝。对于管道和消息队列等通信方式，需要在内核与用户空间进行4次拷贝，而共享内存只拷贝两次：一次从输入文件到共享内存，另一次从共享内存输出到文件。实现主要有：mmap、POXIS共享内存、SystemV共享内存
 
@@ -1091,34 +1058,34 @@ Spring容器负责对象实例化、对象初始化、对象依赖关系组装�
 
 6. **阶段6-Bean实例化阶段**：
 
-​    1. 实例化前阶段：容器在创建对象时AbstractAutowireCapableBeanFactory会遍历beanPostProcessors集合，如果类型是**InstantiationAwareBeanPostProcessor**接口，则调用postProcessBeforeInstantiation方法获取bean，如果获取到对象存在则返回bean，跳过spring自带的实例化。
+	1. 实例化前阶段：容器在创建对象时AbstractAutowireCapableBeanFactory会遍历beanPostProcessors集合，如果类型是**InstantiationAwareBeanPostProcessor**接口，则调用postProcessBeforeInstantiation方法获取bean，如果获取到对象存在则返回bean，跳过spring自带的实例化。
 
-​    2. 实例化阶段：容器在创建对象时，AbstractAutowireCapableBeanFactory会调用SmartInstantiationAwareBeanPostProcessor接口的determineCandidateConstructors方法，该方法会返回候选的构造器列表，也可返回为空。
+	2. 实例化阶段：容器在创建对象时，AbstractAutowireCapableBeanFactory会调用SmartInstantiationAwareBeanPostProcessor接口的determineCandidateConstructors方法，该方法会返回候选的构造器列表，也可返回为空。
 
 7. **阶段7-合并后的BeanDefinition处理**：spring会轮询BeanPostProcessors，依次调用MergedBeanDefinitionPostProcessor接口的postProcessMergedBeanDefinition方法，该接口有2个实现：
 
-​    1. AutowiredAnnotationBeanPostProcessor：对@AutoWired和@Value修饰的方法、字段进行缓存
+	1. AutowiredAnnotationBeanPostProcessor：对@AutoWired和@Value修饰的方法、字段进行缓存
 
-​    2. CommonAnnotationBeanPostProcessor：对@Resource修饰的字段、方法，@PostConstruct修饰的字段，@PreDestroy修饰的方法进行缓存
+	2. CommonAnnotationBeanPostProcessor：对@Resource修饰的字段、方法，@PostConstruct修饰的字段，@PreDestroy修饰的方法进行缓存
 
 8. **阶段8-Bean属性设置阶段**：
 
-​    1. 实例化后阶段：InstantiationAwareBeanPostProcessor接口
+	1. 实例化后阶段：InstantiationAwareBeanPostProcessor接口
 postProcessAfterInstantiation方法返回false的时候，后续的Bean属性赋值前处理、Bean属性赋值都会被跳过了。
 
-​    2. Bean属性赋值前处理：如果InstantiationAwareBeanPostProcessor接口中的postProcessProperties和postProcessPropertyValues都返回空的时候，表示这个bean不需要设置属性，直接返回了，直接进入下一个阶段。
+	2. Bean属性赋值前处理：如果InstantiationAwareBeanPostProcessor接口中的postProcessProperties和postProcessPropertyValues都返回空的时候，表示这个bean不需要设置属性，直接返回了，直接进入下一个阶段。
 
-​    3. Bean属性赋值处理：循环处理PropertyValues中的属性值信息，通过反射调用set方法将属性的值设置到bean实例中。
+	3. Bean属性赋值处理：循环处理PropertyValues中的属性值信息，通过反射调用set方法将属性的值设置到bean实例中。
 
 9. **Bean初始化阶段**：
 
-​    1. Bean Aware接口回调：会调用BeanNameAware, BeanClassLoaderAware, BeanFactoryAware接口的set方法
+	1. Bean Aware接口回调：会调用BeanNameAware, BeanClassLoaderAware, BeanFactoryAware接口的set方法
 
-​    2. Bean初始化前操作：会调用BeanPostProcessor的postProcessBeforeInitialization方法，若返回null，当前方法将结束。
+	2. Bean初始化前操作：会调用BeanPostProcessor的postProcessBeforeInitialization方法，若返回null，当前方法将结束。
 
-​    3. Bean初始化操作：会调用InitializingBean接口的afterPropertiesSet方法，然后在调用自定义的初始化方法
+	3. Bean初始化操作：会调用InitializingBean接口的afterPropertiesSet方法，然后在调用自定义的初始化方法
 
-​    4. Bean初始化后操作：会调用BeanPostProcessor接口的postProcessAfterInitialization方法，返回null的时候，会中断上面的操作。
+	4. Bean初始化后操作：会调用BeanPostProcessor接口的postProcessAfterInitialization方法，返回null的时候，会中断上面的操作。
 
 10. **阶段10-所有单例bean初始化完成后阶段**：所有单例bean实例化完成之后，会调用SmartInitializingSingleton接口的afterSingletonsInstantiated方法
 
@@ -1126,9 +1093,9 @@ postProcessAfterInstantiation方法返回false的时候，后续的Bean属性赋
 
 12. **阶段12-bean销毁阶段**：
 
-​    1. 触发bean销毁的方式：调用AbstractAutowireCapableBeanFactory#destroyBean，ConfigurableBeanFactory#destroySingletons，ApplicationContext#close等方法。
+	1. 触发bean销毁的方式：调用AbstractAutowireCapableBeanFactory#destroyBean，ConfigurableBeanFactory#destroySingletons，ApplicationContext#close等方法。
 
-​    2. Bean销毁会依次执行：（1）DestructionAwareBeanPostProcessor#postProcessBeforeDestruction方法。（2）DisposableBean#destroy方法。（3）bean自定义销毁方法。
+	2. Bean销毁会依次执行：（1）DestructionAwareBeanPostProcessor#postProcessBeforeDestruction方法。（2）DisposableBean#destroy方法。（3）bean自定义销毁方法。
 
 
 
@@ -1216,11 +1183,11 @@ Mybatis仅实现了Executor、ParameterHandler、StatementHandler、ResultSetHan
 
 2. 拦截器（interceptor）：是在面向切面编程中应用的，通过实现Spring中的HandlerInterceptor或WebRequestInterceptor接口，还可以继承以上2个接口的子类，并在SpringMVC-dispatcher配置文件中配置使用，主要拦截Action请求，实现的方法有：
 
-​    1. preHandle：这里有请求链，返回false断链，是Controller前的处理操作
+	1. preHandle：这里有请求链，返回false断链，是Controller前的处理操作
 
-​    2. postHandle：当preHandler返回true才执行，是在controller执行之后，但在DispatcherServlet进行视图返回渲染之前被调用
+	2. postHandle：当preHandler返回true才执行，是在controller执行之后，但在DispatcherServlet进行视图返回渲染之前被调用
 
-​    3. afterCompletion：也是preHandler返回true才执行，是在DispatcherServlet渲染了视图之后执行
+	3. afterCompletion：也是preHandler返回true才执行，是在DispatcherServlet渲染了视图之后执行
 
 3. 拦截器（Interceptor）声明方式：1、直接定义Interceptor实现类的bean对象，这样是对所有请求进行拦截  2、使用mvc:interceptor标签进行声明，通过mvc:mapping子标签来定义拦截路径。
 
