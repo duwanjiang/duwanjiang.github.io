@@ -172,7 +172,7 @@ layout: default
 <!-- 网易云跟帖JS代码 start -->
 <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
 <script>
-console.log("comment test gitalk")
+console.log("comment test netease")
   var cloudTieConfig = {
     url: document.location.href, 
     sourceId: {{site.netease_sourceId}},
@@ -189,7 +189,7 @@ console.log("comment test gitalk")
 {% if site.disqus_username and site.comment_type == "disqus" %}
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
-console.log("comment test gitalk")
+console.log("comment test disqus")
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "{{site.disqus_username}}";
     var disqus_identifier = "{{page.id}}";
@@ -210,7 +210,7 @@ console.log("comment test gitalk")
 <!-- gitalk 公共JS代码 start (一个网页只需插入一次) -->
 <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
+  
 <script type="text/javascript">
 	console.log("comment test gitalk")
 
@@ -220,7 +220,6 @@ console.log("comment test gitalk")
     var gitalk_clientSecret = "{{site.gitalk_clientSecret}}";
     var gitalk_repo = "{{site.gitalk_repo}}";
     var gitalk_identifier = "{{page.id}}";
-    var disqus_url = "{{site.url}}{{page.url}}";
 	
 	var gitalk = new Gitalk({
                 clientID: gitalk_clientId, ///创建gitalk后得到
